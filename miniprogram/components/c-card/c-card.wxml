@@ -1,0 +1,12 @@
+
+<view class="c-card">
+  <view class="c-card-title">
+    {{ title }}
+    <slot name="title"></slot>
+  </view>
+  <view class="c-card-content">
+    {{ content }}
+    <slot name="content"></slot>
+  </view>
+</view>
+  

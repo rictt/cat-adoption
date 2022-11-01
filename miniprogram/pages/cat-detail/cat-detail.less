@@ -1,1 +1,106 @@
-/* pages/cat-detail/cat-detail.wxss */
+@import url("/app.less");
+page {
+  padding-bottom: 130rpx;
+}
+.wrapper {
+  padding: 20rpx;
+  overflow: hidden;
+}
+
+.cat-cover {
+  border-radius: 10rpx;
+  // background-color: @primaryColor;
+  background-color: rgba(255, 167, 102, .1);
+  .cat-cover-image {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.info-wrapper {
+  // padding: 40rpx 34rpx;
+  // border: 1rpx solid @borderColor;
+  // border-radius: 4px;
+  // box-shadow: 0 0 4rpx 4rpx @borderHelpColor;
+}
+
+.info-icon-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .icon-item {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    padding-bottom: 30rpx;
+
+    .icon-image {
+      width: 44rpx;
+      height: 44rpx;
+    }
+    .icon-text {
+      padding-left: 10rpx;
+      font-size: 13px;
+      color: #666;
+    }
+  }
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  font-size: 14px;
+  .info-item-label {
+    color: @helpFontColor;
+  }
+  .info-item-value {
+    color: @primaryFontColor;
+  }
+}
+
+
+.bottom-btns {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.btns-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 90rpx;
+  background-color: #fff;
+  flex: 1;
+}
+
+.btns-left-item {
+  .btn-icon {
+    display: inline-block;
+    width: 40rpx;
+    height: 40rpx;
+  }
+  .btn-text {
+    font-size: 12px;
+    color: @helpFontColor;
+  }
+}
+
+.btns-right {
+  width: 50%;
+  min-width: 50%;
+  line-height: 110rpx;
+  background-color: @primaryColor;
+  color: #fff;
+  text-align: center;
+}

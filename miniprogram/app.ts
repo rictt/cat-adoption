@@ -14,6 +14,23 @@ App({
       });
     }
 
-    this.globalData = {};
+    this.globalData = {
+      safeAreaHeight: 0
+    };
+
+    this.getSafeAreaHeight()
+  },
+
+  getSafeAreaHeight() {
+    console.log('this.getSafeAreaHeight')
+    wx.getSystemInfo({
+      success: (result) => {
+        console.log("getSystemInfo result :" + result)
+        this.globalData.safeAreaHeight = result.safeArea.bottom - result.safeArea.height
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   }
 });

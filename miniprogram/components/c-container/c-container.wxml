@@ -1,0 +1,7 @@
+
+<view class="c-container">
+  <view class="c-container-fixed">
+    <slot></slot>
+  </view>
+</view>
+  
