@@ -1,0 +1,37 @@
+@import url("/app.less");
+
+.cats-item {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+  &::last-child {
+    margin-bottom: 0;
+  }
+}
+.cover-wrapper {
+  // padding: 16rpx 10rpx;
+  width: 250rpx;
+  
+  .cover-wrapper-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.cat-info {
+  flex: 1;
+  padding: 20rpx 15rpx;
+  padding-left: 30rpx;
+
+  .cat-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .cat-desc {
+    color: #cbcbcb;
+    padding: 10rpx 0;
+  }
+}

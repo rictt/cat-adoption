@@ -1,0 +1,12 @@
+<view class="cats-item">
+  <view class="cover-wrapper">
+    <image class="cover-wrapper-image" mode="aspectFill" src="{{ cat.cover }}"></image>
+  </view>
+  <view class="cat-info">
+    <view class="cat-name">{{ cat.name }}</view>
+    <view class="cat-desc">{{ cat.desc }}</view>
+    <view class="tags">
+      <c-tag-list list="{{ cat.tags }}" />
+    </view>
+  </view>
+</view>

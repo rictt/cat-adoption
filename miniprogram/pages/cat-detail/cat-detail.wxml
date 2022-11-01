@@ -1,0 +1,4 @@
+<!--pages/cat-detail/cat-detail.wxml-->
+<text>pages/cat-detail/cat-detail.wxml</text>
+
+<view>{{ catId }}</view>

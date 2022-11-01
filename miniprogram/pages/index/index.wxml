@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="container">
+
+  <c-swiper indicator-dots="{{ true }}" autoplay height="400" list="{{ indexSwiperList }}"></c-swiper>
+
+  <view class="index-cols">
+    <view class="cols-item">
+      <image class="cols-item-image" src="/images/index-col-1.png" />
+      <text class="cols-item-text">领养须知</text>
+    </view>
+    <view class="cols-item">
+      <image class="cols-item-image" src="/images/index-col-2.png" />
+      <text class="cols-item-text">领取协议</text>
+    </view>
+    <view class="cols-item">
+      <image class="cols-item-image" src="/images/index-col-3.png" />
+      <text class="cols-item-text">常见知识</text>
+    </view>
+  </view>
+
+  <view class="content-wrapper">
+    <view class="content-query">正在定位中...</view>
+    <view class="cats-list">
+      <cat-info class="cats-item" data-id="{{ item.id }}" wx:for="{{ cats }}" cat="{{ item }}" wx:key="index" bindtap="onClickCatItem">
+      </cat-info>
+    </view>
+  </view>
+
+</view>

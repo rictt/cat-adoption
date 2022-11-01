@@ -1,0 +1,10 @@
+<view class="c-swiper-wrapper">
+  <swiper indicator-dots="{{indicatorDots}}" duration="{{ duration }}"
+  interval="{{ interval }}" autoplay="{{ autoplay }}" class="c-swiper" style="height: {{ height + 'rpx' }}">
+    <block wx:for="{{ list }}" wx:key="index">
+      <swiper-item class="c-swiper-item">
+        <image class="c-swiper-image" mode="widthFix" src="{{ item.src }}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

@@ -1,0 +1,3 @@
+<view class="c-tag-list">
+  <c-tag wx:for="{{ list }}" wx:key="index">{{ item }}</c-tag>
+</view>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "c-tag": "/components/c-tag/c-tag",
+    "c-tag-list": "/components/c-tag-list/c-tag-list"
+  }
+}

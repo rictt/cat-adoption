@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/find-adoption/find-adoption",
+    "pages/cat-detail/cat-detail"
+  ],
+  "tabBar": {
+    "selectedColor": "#ffa766",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/index-col-1.png",
+        "selectedIconPath": "/images/index-col-1.png"
+      },
+      {
+        "pagePath": "pages/find-adoption/find-adoption",
+        "text": "找领养",
+        "iconPath": "/images/find-adoption.png",
+        "selectedIconPath": "/images/find-adoption.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/index-col-2.png",
+        "selectedIconPath": "/images/index-col-2.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云爹妈中心",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

@@ -1,0 +1,3 @@
+<text class="c-tag">
+  <slot></slot>
+</text>
