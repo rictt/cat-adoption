@@ -88,5 +88,17 @@
       <view class="btn-text">收藏</view>
     </view>
   </view>
-  <view class="btns-right">我要申请</view>
+  <view class="btns-right" bindtap="onClickApply">我要申请</view>
 </view>
+
+<c-popup visible="{{ applyModalVisible }}" title="领养猫须知" okText="现在申请" bindonConfirm="onConfirm">
+  <view class="content-popup" slot="content">
+    <view>1.独立经济能力，稳定住所，学生领养需要家长申请。</view>
+    <view>2.同住成员，住处房东的认可同意</view>
+    <view>3.全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知</view>
+    <view>4.全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知</view>
+    <view>5.全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知</view>
+    <view>7.阿道夫非法所得反反复复方法</view>
+    <view>9.阿道夫非法所得反反复复方法</view>
+  </view>
+</c-popup>

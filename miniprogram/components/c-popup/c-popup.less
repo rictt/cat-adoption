@@ -1,0 +1,85 @@
+@import url('/app.less');
+
+.c-popup {
+  position: fixed;
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  z-index: 2001;
+
+  &.top {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &.bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &.center {
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.c-popup-title {
+  font-size: 18px;
+  padding-top: 20rpx;
+  padding-bottom: 30rpx;
+  font-weight: 500;
+  text-align: center;
+  color: @primaryFontColor;
+}
+
+.c-popup-close {
+  position: absolute;
+  right: 36rpx;
+  color: #666;
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.c-popup-content {
+  font-size: 14px;
+  color: @helpFontColor;
+  line-height: 2;
+}
+
+.c-popup-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.c-popup-btns {
+  display: flex;
+  width: calc(100% + 60rpx);
+  margin-left: -30rpx;
+  margin-bottom: -20rpx;
+
+  .c-popup-btn {
+    flex: 1;
+    padding: 30rpx 0;
+    text-align: center;
+
+    &.ok {
+      background-color: @primaryColor;
+      color: #fff;
+    }
+    &.cancel {
+      background-color: #f2f2f2;
+      color: #666;
+    }
+  }
+}

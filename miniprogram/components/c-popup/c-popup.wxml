@@ -1,0 +1,19 @@
+<view wx:if="{{ _visible }}">
+  <view class="c-popup {{ popupClass }}">
+    <image bindtap="onClose" class="c-popup-close" src="/images/close.png" />
+    <view wx:if="{{ title }}" class="c-popup-title">
+      {{ title }}
+    </view>
+    <view wx:if="{{ content }}" class="c-popup-content">{{ content }}</view>
+    <slot name="title"></slot>
+    <slot name="content"></slot>
+
+    <view wx:if="{{ okText || cancelText }}" class="c-popup-btns">
+      <view wx:if="{{ cancelText }}" bindtap="onCancel" class="c-popup-btn cancel">{{ cancelText }}</view>
+      <view wx:if="{{ okText }}" bindtap="onConfirm" class="c-popup-btn ok">{{ okText }}</view>
+    </view>
+  </view>
+
+  <view class="c-popup-mask"></view>
+</view>
+  

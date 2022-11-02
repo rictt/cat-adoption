@@ -3,6 +3,7 @@ Page({
   data: {
     bottom: app.globalData.safeAreaHeight,
     catId: null,
+    applyModalVisible: false,
     cat: {
       id: '0001',
       name: "Gucci",
@@ -20,6 +21,20 @@ Page({
   onLoad(options) {
     this.setData({
       catId: options.id
+    })
+  },
+
+  onClickApply() {
+    console.log('click')
+    console.log(this.data.cat)
+    this.setData({
+      applyModalVisible: true
+    })
+  },
+
+  onConfirm() {
+    this.setData({
+      applyModalVisible: false
     })
   },
 

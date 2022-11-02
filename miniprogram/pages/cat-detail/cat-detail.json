@@ -2,6 +2,7 @@
   "navigationBarTitleText": "猫咪详情",
   "usingComponents": {
     "c-swiper": "/components/c-swiper/c-swiper",
-    "c-card": "/components/c-card/c-card"
+    "c-card": "/components/c-card/c-card",
+    "c-popup": "/components/c-popup/c-popup"
   }
 }
