@@ -35,6 +35,5 @@
     "navigationBarTitleText": "云爹妈中心",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }

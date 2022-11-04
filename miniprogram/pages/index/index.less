@@ -22,14 +22,12 @@ page {
 
     .cols-item-image {
       display: block;
-      width: 100rpx;
-      height: 100rpx;
+      width: 70rpx;
+      height: 70rpx;
     }
     .cols-item-text {
+      font-size: 14px;
       padding: 14rpx 0;
-      // color: #999;
-      // color: #fb9e8f;
-      // color: #ffa766;
       color: @primaryColor;
     }
   }
@@ -40,5 +38,25 @@ page {
 }
 
 .content-query {
-  padding-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+
+  .location-image {
+    width: 30rpx;
+    height: 30rpx;
+  }
+
+  .location-text {
+    font-size: 14px;
+    color: @helpFontColor;
+    padding: 0 10rpx;
+    padding-left: 14rpx;
+    padding-right: 20rpx;
+  }
+  
+  .arrow-image {
+    width: 28rpx;
+    height: 28rpx;
+  }
 }

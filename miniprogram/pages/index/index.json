@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "c-swiper": "/components/c-swiper/c-swiper",
-    "cat-info": "./cat-info/cat-info"
+    "cat-info": "./cat-info/cat-info",
+    "van-area": "@vant/weapp/area/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

@@ -6,3 +6,9 @@
   - 微信小程序
   - less + ts
   - 微信云开发
+  - vant/weapp组件库
+
+## 引入vant注意事项
+
+  [推荐跟着官方来](https://vant-contrib.gitee.io/vant-weapp/#/quickstart)
+
