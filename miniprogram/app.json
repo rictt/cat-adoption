@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/find-adoption/find-adoption",
-    "pages/cat-detail/cat-detail"
+    "pages/cat-detail/cat-detail",
+    "pages/read-find-adoption/read-find-adoption"
   ],
   "tabBar": {
     "selectedColor": "#ffa766",
@@ -15,7 +16,7 @@
         "selectedIconPath": "/images/index-col-1.png"
       },
       {
-        "pagePath": "pages/find-adoption/find-adoption",
+        "pagePath": "pages/read-find-adoption/read-find-adoption",
         "text": "找领养",
         "iconPath": "/images/find-adoption.png",
         "selectedIconPath": "/images/find-adoption.png"

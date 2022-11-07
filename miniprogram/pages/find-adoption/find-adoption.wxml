@@ -1,2 +1,82 @@
-<!--pages/find-adoption/find-adoption.wxml-->
-<text>pages/find-adoption/find-adoption.wxml</text>
+<view class="form-card">
+  <view class="card-title">基本信息</view>  
+  <view class="card-content">
+    <c-form-item label="送养人" required type="input" placeholder="请输入昵称" />
+    <c-form-item label="猫咪性别" required>
+      <view>
+        <radio-group>
+          <radio style="margin-right: 30rpx;" color="#ffa766">小王子</radio>
+          <radio color="#ffa766">小公主</radio>
+        </radio-group>
+      </view>
+    </c-form-item>
+    <c-form-item required type="input" label="猫咪年龄" placeholder="几个月/几年大" />
+    <c-form-item 
+      class="empty-bottom-cls"
+      type="textarea" 
+      label="猫咪描述" 
+      required 
+      placeholder="在哪捡到的，健康状况如何，有什么癖好等..."
+    />
+  </view>
+</view>
+
+<view class="form-card radius">
+  <view class="card-title">领养要求</view>  
+  <view class="card-content">
+    <c-form-item label="领养地址" required>
+      <picker mode="region" bindchange="addressChange">
+        <view style="color: #666;" selectable="false" space="false" decode="false">
+          请选择
+        </view>
+      </picker>
+    </c-form-item>
+    <c-form-item label="回访" required>
+      <view>
+        <radio-group>
+          <radio style="margin-right: 30rpx;" color="#ffa766">定期回访</radio>
+          <radio color="#ffa766">不需要</radio>
+        </radio-group>
+      </view>
+    </c-form-item>
+    <c-form-item class="parentClass" label="签订协议" required>
+      <view>
+        <radio-group>
+          <radio style="margin-right: 30rpx;" color="#ffa766">需要</radio>
+          <radio color="#ffa766">不需要</radio>
+        </radio-group>
+      </view>
+    </c-form-item>
+    <c-form-item label="详细要求补充" class="empty-bottom-cls" required type="textarea" placeholder="请填写完整领养要求" />
+  </view>
+</view>
+
+<view class="form-card radius">
+  <view class="card-title">上传图片</view>  
+  <view class="card-content">
+    <c-form-item class="empty-bottom-cls" label="选择图片" required>  
+      <van-uploader accept="image" multiple file-list="{{ fileList }}" bind:after-read="afterRead" />
+    </c-form-item>
+  </view>
+</view>
+
+<view class="form-card radius" style="padding-bottom: 110rpx">
+  <view class="card-title">联系方式</view>  
+  <view class="card-content">
+    <c-form-item label="联系号码" placeholder="微信/QQ/手机" required />
+    <c-form-item class="empty-bottom-cls" label="所在地" required>
+      <picker mode="region" bindchange="addressChange">
+        <view style="color: #666;" selectable="false" space="false" decode="false">
+          请选择
+        </view>
+      </picker>
+    </c-form-item>
+  </view>
+</view>
+
+<c-fixed-bottom>
+  <view class="submit-form-btn" bindtap="onClickSubmit">
+    保存提交
+  </view>
+</c-fixed-bottom>
+  

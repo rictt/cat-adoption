@@ -59,6 +59,20 @@
           "query": "id=0001",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "找领养",
+          "pathName": "pages/find-adoption/find-adoption",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "阅读找领养",
+          "pathName": "pages/read-find-adoption/read-find-adoption",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

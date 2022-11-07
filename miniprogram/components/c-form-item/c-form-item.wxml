@@ -1,0 +1,11 @@
+<view class="form-item class {{ type }}">
+  <view class="form-item-label">
+    <text wx:if="{{ required }}" class="form-item-required">*</text>
+    {{ label }}
+  </view>
+  <view class="form-item-content">
+    <slot></slot>
+    <input wx:if="{{ type === 'input' }}" placeholder="{{ placeholder }}" />
+    <textarea class="item-content-textarea" wx:if="{{ type === 'textarea' }}" placeholder="{{ placeholder }}" />
+  </view>
+</view>

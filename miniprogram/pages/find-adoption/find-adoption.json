@@ -1,3 +1,13 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "c-form-item": "/components/c-form-item/c-form-item",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "c-fixed-bottom": "/components/c-fixed-bottom/c-fixed-bottom"
+  }
 }

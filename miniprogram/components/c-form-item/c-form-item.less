@@ -1,0 +1,44 @@
+@import url("/app.less");
+
+.form-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 0;
+  margin-bottom: 10rpx;
+  border-bottom: 1rpx solid #eee;
+
+  &.textarea {
+    display: block;
+    .form-item-content {
+      padding-left: 20rpx;
+    }
+  }
+
+  .form-item-required {
+    color: @primaryColor;
+  }
+
+  &:last-child {
+    // border-bottom: 0;
+  }
+
+  .form-item-label {
+    font-size: 14px;
+    color: @helpFontColor;
+    min-width: 200rpx;
+  }
+  .form-item-content {
+    font-size: 14px;
+    padding-left: 30rpx;
+    flex: 1;
+    text-align: right;
+    
+    .item-content-textarea {
+      color: @primaryFontColor;
+      padding: 16rpx 0;
+      line-height: 1.5;
+      text-align: left;
+    }
+  }
+}

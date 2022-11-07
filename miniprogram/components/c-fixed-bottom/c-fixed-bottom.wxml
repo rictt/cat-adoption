@@ -1,0 +1,4 @@
+<view class="fixed-bottom outclass" style="padding-bottom: {{ bottom }}rpx">
+  <slot />
+</view>
+  
