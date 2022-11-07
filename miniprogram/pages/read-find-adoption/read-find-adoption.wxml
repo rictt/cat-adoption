@@ -1,2 +1,14 @@
-<!--pages/read-find-adoption/read-find-adoption.wxml-->
-<text>pages/read-find-adoption/read-find-adoption.wxml</text>
+<view class="read-wrapper">
+  <view class="read-card" bindtap="gotoFormPage">
+    <view class="card-title">找领养</view>    
+    <view class="card-desc">1.请注意保护自己的个人信息，注意防骗</view>
+    <view class="card-desc">2.仅提供为猫咪找新主人服务，不做任何承诺保证</view>
+    <view class="card-desc">3.在发布前请再三核对信息是否无误，避免影响领养</view>
+    <view class="card-desc">4.发布信息xxxx</view>
+    <view class="card-icon">
+      <text class="card-icon-text">前往填写</text>
+      <image src="/images/arrow-right.png" class="card-icon-arrow"  />
+    </view>
+  </view>
+</view>
+  
