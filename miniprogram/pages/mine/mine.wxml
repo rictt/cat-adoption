@@ -1,14 +1,48 @@
 <c-navigation title="我的" color="#fff" backgroundColor="{{ backgroundColor }}">
 </c-navigation>
+
 <view class="mine-top">
-  <view class="mine-avatar"></view>
+  <view class="mine-avatar">
+    <image class="avatar" src="/images/index-col-1.png" />
+      
+  </view>
   <view class="mine-info">
     <view class="info-name">joey</view>
-    <view class="info-createtime">注册日期：2022.12.21</view>
+    <view class="info-createtime">注册时间：2022.12.21</view>
   </view>
   <image class="mine-cat" src="/images/index-col-1.png" />
 </view>
 
 <view class="mine-menu">
+  <view class="menu-item">
+    <image class="menu-item-icon" src="/images/index-col-1.png" />
+    <text class="menu-item-text">我的收藏</text>
+    <image class="menu-item-icon" src="/images/arrow-right.png" />
+  </view>
+  <view class="menu-item">
+    <image class="menu-item-icon" src="/images/index-col-2.png" />
+    <text class="menu-item-text">领养记录</text>
+    <image class="menu-item-icon" src="/images/arrow-right.png" />
+  </view>
 
+  <view class="menu-item">
+    <image class="menu-item-icon" src="/images/index-col-3.png" />
+    <text class="menu-item-text">送养记录</text>
+    <image class="menu-item-icon" src="/images/arrow-right.png" />
+  </view>
+  <view class="menu-item">
+    <image class="menu-item-icon" src="/images/location.png" />
+    <text class="menu-item-text">联系客服</text>
+    <image class="menu-item-icon" src="/images/arrow-right.png" />
+  </view>
+  <view class="menu-item">
+    <image class="menu-item-icon" src="/images/close.png" />
+    <text class="menu-item-text">官方反馈</text>
+    <image class="menu-item-icon" src="/images/arrow-right.png" />
+  </view>
+  <view class="menu-item">
+    <image class="menu-item-icon" src="/images/find-adoption.png" />
+    <text class="menu-item-text">关于小程序</text>
+    <image class="menu-item-icon" src="/images/arrow-right.png" />
+  </view>
 </view>  
