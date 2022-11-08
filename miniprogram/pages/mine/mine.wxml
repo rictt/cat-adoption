@@ -1,2 +1,14 @@
-<!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<c-navigation title="我的" color="#fff" backgroundColor="{{ backgroundColor }}">
+</c-navigation>
+<view class="mine-top">
+  <view class="mine-avatar"></view>
+  <view class="mine-info">
+    <view class="info-name">joey</view>
+    <view class="info-createtime">注册日期：2022.12.21</view>
+  </view>
+  <image class="mine-cat" src="/images/index-col-1.png" />
+</view>
+
+<view class="mine-menu">
+
+</view>  

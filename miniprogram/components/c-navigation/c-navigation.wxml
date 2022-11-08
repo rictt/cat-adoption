@@ -1,0 +1,11 @@
+<view class="c-navigation" style="background-color: {{ backgroundColor }}; color: {{ color }}">
+  <view class="c-status-bar" style="height: {{ statusBarHeight }}px;"></view>
+  <view class="c-capsule-wrap" style="height: {{ capsuleHeight }}px;">
+    <view class="left">
+      <slot name="left">
+      </slot>
+    </view>
+    <view class="center-text" style="line-height: {{ capsuleHeight }}px;">{{ title }}</view>
+  </view>
+</view>
+  

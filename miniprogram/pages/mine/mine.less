@@ -1,1 +1,42 @@
-/* pages/mine/mine.wxss */
+@import url('/app.less');
+
+.mine-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 50rpx 60rpx;
+  box-sizing: border-box;
+  background-color: @primaryColor;
+  
+  .mine-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1rpx solid #fff;
+  }
+  .mine-info {
+    color: #fff;
+    padding-left: 30rpx;
+    
+    .info-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .info-createtime {
+      font-size: 11px;
+      font-weight: 300;
+    }
+  }
+  .mine-cat {
+    position: absolute;
+    right: 60rpx;
+    bottom: 20rpx;
+    width: 120rpx;
+    height: 120rpx;
+    // filter: blur(4rpx);
+    opacity: 0.2;
+    transform: rotate(20deg);
+  }
+}

@@ -16,22 +16,29 @@ App({
     }
 
     this.globalData = {
-      safeAreaHeight: 0
+      safeAreaHeight: 0,
+      statusBarHeight: 0,
+      capsuleHeight: 0,
+      capsuleWidth: 0
     };
 
-    this.getSafeAreaHeight()
+    this.getPageInfo()
   },
 
-  getSafeAreaHeight() {
-    console.log('this.getSafeAreaHeight')
-    wx.getSystemInfo({
-      success: (result) => {
-        console.log("getSystemInfo result :", result)
-        this.globalData.safeAreaHeight = result.safeArea.bottom - result.safeArea.height
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
+  getPageInfo() {
+    // https://www.cnblogs.com/chenwolong/p/navigationBar.html，很详细，推荐！
+    // 胶囊按钮位置信息
+    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+    // 获取系统信息
+    const systemInfo = wx.getSystemInfoSync()
+    console.log("getSystemInfo result :", systemInfo)
+    console.log(menuButtonInfo)
+    console.log("menuButtonInfo result: ", menuButtonInfo)
+
+    // 胶囊整块的高度 = 胶囊上下边距 + 胶囊本身高度
+    const capsuleHeight = (menuButtonInfo.top - systemInfo.statusBarHeight) * 2 + menuButtonInfo.height
+    this.globalData.safeAreaHeight = systemInfo.safeArea.bottom - systemInfo.safeArea.height
+    this.globalData.statusBarHeight = systemInfo.statusBarHeight
+    this.globalData.capsuleHeight = capsuleHeight
   }
 });

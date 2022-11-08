@@ -12,3 +12,5 @@
 
   [推荐跟着官方来](https://vant-contrib.gitee.io/vant-weapp/#/quickstart)
 
+## 自定义胶囊
+  [链接](https://www.cnblogs.com/chenwolong/p/navigationBar.html)

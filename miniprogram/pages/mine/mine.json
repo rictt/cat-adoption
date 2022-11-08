@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "c-navigation": "/components/c-navigation/c-navigation"
+  },
+  "navigationStyle": "custom"
 }
