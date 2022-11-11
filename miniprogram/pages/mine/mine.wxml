@@ -3,12 +3,12 @@
 
 <view class="mine-top">
   <view class="mine-avatar">
-    <image class="avatar" src="/images/index-col-1.png" />
-      
+    <image wx:if="{{ !avatarUrl }}" class="avatar" src="/images/index-col-1.png" />
+    <image wx:else class="avatar" mode="widthFix" src="{{ avatarUrl }}" />
   </view>
-  <view class="mine-info">
-    <view class="info-name">joey</view>
-    <view class="info-createtime">注册时间：2022.12.21</view>
+  <view class="mine-info" bindtap="onLogin">
+    <view class="info-name">{{ nickName }}</view>
+    <view class="info-createtime">注册时间：{{ filter.formatTime(createTime) }}</view>
   </view>
   <image class="mine-cat" src="/images/index-col-1.png" />
 </view>
@@ -46,3 +46,5 @@
     <image class="menu-item-icon" src="/images/arrow-right.png" />
   </view>
 </view>  
+
+<wxs src="/app.wxs" module="filter" />

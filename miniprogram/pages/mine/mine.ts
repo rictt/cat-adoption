@@ -1,66 +1,66 @@
-// pages/mine/mine.ts
+import userModel from "../../model/user"
+
+const app = getApp();
+  
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    backgroundColor: '#ffa766'
+    backgroundColor: '#ffa766',
+    nickName: '点击登录',
+    createTime: '请先登录',
+    avatarUrl: "",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
-
+  async onLoad() {
+    let userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      userInfo = JSON.parse(userInfo)
+    } else {
+      userInfo = app.globalData.userInfo
+    }
+    if (userInfo) {
+      this.setData({
+        nickName: userInfo.nickName,
+        createTime: userInfo.createTime,
+        avatarUrl: userInfo.avatarUrl,
+      })
+    } else {
+      this.onLogin()
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  onLogin() {
+    wx.login({
+      timeout: 10000,
+      success: (result) => {
+        const code = result.code
+        wx.getUserInfo({
+          withCredentials: 'false',
+          lang: 'zh_CN',
+          desc: '用于完善用户资料',
+          timeout:10000,
+          success: async (result) => {
+            const { userInfo } = result
+            const { nickName, avatarUrl } = userInfo
+            this.setData({
+              nickName,
+              avatarUrl,
+              createTime: Date.now()
+            })
+            const flag = await userModel.insert({ ...userInfo, openId: app.globalData.openId })
+            if (flag) {
+              wx.showToast({
+                title: '登录成功',
+                icon: 'none'
+              })
+            }
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+          
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

@@ -1,28 +1,62 @@
-// app.js
+
 App({
-  onLaunch: function () {
+  globalData: {
+    safeAreaHeight: 0,
+    statusBarHeight: 0,
+    capsuleHeight: 0,
+    capsuleWidth: 0,
+    appId: undefined,
+    openId: undefined,
+    userInfo: null
+  },
+
+  onLaunch: async function () {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
-    } else {
-      console.log('wx.cloud loaded')
-      wx.cloud.init({
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        env: 'cat-adoption-dev-5fjfdgk22f7800a',
-        traceUser: true,
-      });
+      return console.error('请使用 2.2.3 或以上的基础库以使用云能力');
     }
 
-    this.globalData = {
-      safeAreaHeight: 0,
-      statusBarHeight: 0,
-      capsuleHeight: 0,
-      capsuleWidth: 0
-    };
+    console.log('wx.cloud loaded')
+    wx.cloud.init({
+      env: 'cat-adoption-dev-5fjfdgk22f7800a',
+      traceUser: true,
+    });
 
+    this.getOpenId()
     this.getPageInfo()
+  },
+
+  getOpenId() {
+    const openId = wx.getStorageSync('openId');
+    if (openId) {
+      this.globalData.openId = openId
+      this.getUser()
+      return
+    }
+      
+    wx.cloud.callFunction({
+      name: 'get-open-id',
+      success: (response) => {
+        const result = response.result
+        const { openid, appid } = result
+        wx.setStorageSync('openId', openid);
+        this.globalData.openId = openid
+        this.globalData.appId = appid
+        this.getUser()
+      },
+      fail: (e) => {
+        console.log('get open id fail')
+        console.log(e)
+      }
+    })
+  },
+
+  async getUser() {
+    const userModel = require('./model/user').default
+    const result = await userModel.getUserInfo(this.globalData.openId)
+    if (result) {
+      this.globalData.userInfo = result
+      wx.setStorageSync('userInfo', JSON.stringify(result))
+    }
   },
 
   getPageInfo() {

@@ -1,0 +1,6 @@
+function formatTime(timestamp) {
+  var d = getDate(timestamp)
+  return d.toLocaleDateString().replace(getRegExp('/', 'g'), '.')
+}
+
+module.exports.formatTime = formatTime
