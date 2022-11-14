@@ -9,44 +9,42 @@
     <view slot="content" class="info-wrapper">
       <view class="info-icon-list">
         <view class="icon-item">
-          <image class="icon-image" src="/images/find-adoption.png"></image>
-          <text class="icon-text">女生</text>
+          <image class="icon-image" src="/images/breed-bag.png"></image>
+          <text class="icon-text">{{ cat.breed }}</text>
+        </view>
+        <view class="icon-item">
+          <image class="icon-image" src="/images/gender-icon.png"></image>
+          <text class="icon-text">{{ cat.gender === '0' ? '小王子' : '小公主' }}</text>
         </view>
         <view class="icon-item">
           <image class="icon-image" src="/images/find-adoption.png"></image>
-          <text class="icon-text">1年</text>
+          <text class="icon-text">{{ cat.age }}</text>
         </view>
         <view class="icon-item">
-          <image class="icon-image" src="/images/find-adoption.png"></image>
-          <text class="icon-text">6kg</text>
+          <image class="icon-image" src="/images/qiu.png"></image>
+          <text class="icon-text">{{ cat.isSterilization ? '已绝育' : '未绝育' }}</text>
         </view>
         <view class="icon-item">
-          <image class="icon-image" src="/images/find-adoption.png"></image>
-          <text class="icon-text">短毛</text>
+          <image class="icon-image" src="/images/yimiao.png"></image>
+          <text class="icon-text">{{ cat.isVaccinated ? '已打疫苗' : '未打疫苗' }}</text>
         </view>
         <view class="icon-item">
-          <image class="icon-image" src="/images/find-adoption.png"></image>
-          <text class="icon-text">成年</text>
-        </view>
-        <view class="icon-item">
-          <image class="icon-image" src="/images/find-adoption.png"></image>
-          <text class="icon-text">已打疫苗</text>
         </view>
       </view>
 
       <view class="info-item">
         <view class="info-item-label">发布时间</view>
-        <view class="info-item-value">2022-12-11</view>
+        <view class="info-item-value">{{ filter.formatTime(cat.createTime) }}</view>
       </view>
 
       <view class="info-item">
-        <view class="info-item-label">性格</view>
-        <view class="info-item-value">安静，可爱，不吵</view>
+        <view class="info-item-label">定期回访</view>
+        <view class="info-item-value">{{ cat.needReturnVisit ? '需要' : '不需要' }}</view>
       </view>
-
+      
       <view class="info-item">
-        <view class="info-item-label">是否接受合租</view>
-        <view class="info-item-value">不接受</view>
+        <view class="info-item-label">签订领养协议</view>
+        <view class="info-item-value">{{ cat.needContract ? '需要' : '不需要' }}</view>
       </view>
 
       <view class="info-item">
@@ -62,8 +60,6 @@
       {{ cat.desc }}
     </view>
   </c-card>
-
-  <c-card title="健康情况" content="良好" />
 
   <c-card title="领养条件">
     <view slot="content">
@@ -97,3 +93,5 @@
     <view>9.阿道夫非法所得反反复复方法</view>
   </view>
 </c-popup>
+
+<wxs src="/app.wxs" module="filter" />

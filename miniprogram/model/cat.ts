@@ -19,7 +19,6 @@ class CatModel extends Base {
   async getList(params = { pageSize: 5, pageNum: 1 }): Promise<Cat[]> {
     const { pageSize, pageNum } = params
     const { data } = await this.model
-      .orderBy('sort', 'desc')
       .skip((pageNum - 1) * pageSize)
       .limit(pageSize)
       .get()

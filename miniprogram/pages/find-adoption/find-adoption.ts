@@ -2,19 +2,19 @@ import catModel from '../../model/cat'
 
 Page({
   data: {
-    name: '猫咪昵称',
-    breed: '中华田园猫',
-    gender: 0,
-    age: '3个月大',
+    name: '',
+    breed: '',
+    gender: '',
+    age: '',
+    needReturnVisit: '',
+    needContract: '',
     imgList: [],
     adoptionAddress: [],
     adoptionAddressText: '请选择',
-    needReturnVisit: true,
-    needContract: true,
-    desc: '详细描述',
-    adoptionDesc: '领养描述',
-    isVaccinated: false,
-    isSterilization: true,
+    desc: '',
+    adoptionDesc: '',
+    isVaccinated: '',
+    isSterilization: '',
 
     // sb小程序不支持obj.key model绑定
     formKeys: ['name', 'gender'],
@@ -89,15 +89,16 @@ Page({
   async onClickSubmit() {
     // setTimeout(())
     const keys = [
-      'name', 'gender', 'imgList', 'isVaccinated',
+      'name', 'gender', 'age', 'imgList', 'isVaccinated',
       'isSterilization', 'desc', 'adoptionAddress',
       'needReturnVisit', 'needContract', 'adoptionDesc',
-      'username', 'contact'
+      'username', 'contact', 'breed'
     ]
     const form = {}
     for (const key of keys) {
       const value = this.data[key]
       if (typeof value === 'boolean' || (typeof value === 'number' && value === 0)) {
+        form[key] = value
         continue
       }
       if (!value || (Array.isArray(value) && !value.length)) {

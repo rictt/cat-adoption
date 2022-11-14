@@ -20,12 +20,18 @@ Page({
   },
 
   async getCatDetail() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    });
     const id = this.data.catId
     const data = await catModel.getCat(id)
-    console.log(data)
     this.setData({
       cat: data
     })
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 1000)
   },
 
   onClickApply() {

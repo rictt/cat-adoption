@@ -6,19 +6,19 @@
     <c-form-item label="猫咪性别" required 
       type="radiogroup" 
       model:value="{{ gender }}"
-      radioGroup="{{ [{ value: 0, label: '小王子' }, { value: 1, label: '小公主' }] }}"
+      radioGroup="{{ [{ value: '0', label: '小王子' }, { value: '1', label: '小公主' }] }}"
     >
     </c-form-item>
     <c-form-item label="已打疫苗" required
       type="radiogroup"
       model:value="{{ isVaccinated }}"
-      radioGroup="{{ [{ value: true, label: '是' }, { value: false, label: '否' }] }}"
+      radioGroup="{{ [{ value: '10', label: '是' }, { value: '11', label: '否' }, { value: '12', label: '不清楚'}] }}"
       >
     </c-form-item>
     <c-form-item label="已节育" required
       type="radiogroup"
       model:value="{{ isSterilization }}"
-      radioGroup="{{ [{ value: true, label: '是' }, { value: false, label: '否' }] }}"
+      radioGroup="{{ [{ value: '10', label: '是' }, { value: '11', label: '否' }, { value: '12', label: '不清楚'}] }}"
       >
     </c-form-item>
     <c-form-item required model:value="{{ age }}" type="input" label="猫咪年龄" placeholder="几个月/几年大" />
@@ -49,13 +49,13 @@
     <c-form-item label="回访" required
       type="radiogroup"
       model:value="{{ needReturnVisit }}"
-      radioGroup="{{ [{ value: true, label: '需要' }, { value: false, label: '不需要' }] }}"
+      radioGroup="{{ [{ value: '10', label: '需要' }, { value: '11', label: '不需要' }] }}"
       >
     </c-form-item>
     <c-form-item class="parentClass" label="签订协议" required
       type="radiogroup"
       model:value="{{ needContract }}"
-      radioGroup="{{ [{ value: true, label: '需要' }, { value: false, label: '不需要' }] }}"
+      radioGroup="{{ [{ value: '10', label: '需要' }, { value: '11', label: '不需要' }] }}"
       >
     </c-form-item>
     <c-form-item label="详细要求补充" model:value="{{ adoptionDesc }}" class="empty-bottom-cls" required type="textarea" placeholder="请填写完整领养要求" />
