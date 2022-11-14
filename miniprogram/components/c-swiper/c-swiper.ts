@@ -21,8 +21,39 @@ Component({
     interval: {
       type: Number,
       value: 3000
+    },
+    mode: {
+      type: String,
+      value: "aspectFit"
+    },
+    preview: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
   },
+
+  methods: {
+    clickImage(e) {
+      if (!this.data.preview) {
+        return
+      }
+      const index = e.target.dataset.index
+      const list = this.data.list
+      const current = list[index].url || list[index].src
+      wx.previewImage({
+        current,
+        urls: list.map(e => e.url || e.src),
+        success: (result) => {
+          
+        },
+        fail: (e) => {
+          console.log(e)
+        },
+        complete: () => {}
+      });
+        
+    }
+  }
 })

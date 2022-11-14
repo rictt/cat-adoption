@@ -1,6 +1,6 @@
 <view class="wrapper">
   <view class="cat-cover">
-    <c-swiper interval="{{ 2000 }}" autoplay="{{ true }}" list="{{ cat.imgList }}" />
+    <c-swiper preview="{{ true }}" interval="{{ 2000 }}" autoplay="{{ true }}" list="{{ cat.imgList }}" />
   </view>
 </view>
 

@@ -3,7 +3,7 @@
   interval="{{ interval }}" autoplay="{{ autoplay }}" class="c-swiper" style="height: {{ height + 'rpx' }}">
     <block wx:for="{{ list }}" wx:key="index">
       <swiper-item class="c-swiper-item">
-        <image class="c-swiper-image" mode="widthFix" src="{{ item.src || item.url }}"></image>
+        <image data-index="{{ index }}" bindtap="clickImage" class="c-swiper-image" mode="aspectFit" src="{{ item.src || item.url }}"></image>
       </swiper-item>
     </block>
   </swiper>
