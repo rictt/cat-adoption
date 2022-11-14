@@ -7,3 +7,15 @@ export interface User {
   gender: number
   avatarUrl: string
 }
+
+export interface Cat {
+  name: string
+  age: string
+  gender: number
+  desc: string
+  imgList: { url: string }[]
+  adoptionAddress: string[]
+  adoptionDesc: string
+  contact: string
+  createTime: number
+}

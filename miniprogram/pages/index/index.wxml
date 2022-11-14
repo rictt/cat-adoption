@@ -31,7 +31,7 @@
       </view>
     </picker>
     <view class="cats-list">
-      <cat-info class="cats-item" data-id="{{ item.id }}" wx:for="{{ cats }}" cat="{{ item }}" wx:key="index" bindtap="onClickCatItem">
+      <cat-info class="cats-item" data-id="{{ item._id }}" wx:for="{{ cats }}" cat="{{ item }}" wx:key="index" bindtap="onClickCatItem">
       </cat-info>
     </view>
   </view>

@@ -5,7 +5,21 @@
   </view>
   <view class="form-item-content">
     <slot></slot>
-    <input wx:if="{{ type === 'input' }}" placeholder="{{ placeholder }}" />
-    <textarea class="item-content-textarea" wx:if="{{ type === 'textarea' }}" placeholder="{{ placeholder }}" />
+    <input model:value="{{ value }}" bindinput="handleInputChange" wx:if="{{ type === 'input' }}" placeholder="{{ placeholder }}" />
+    <textarea model:value="{{ value }}" class="item-content-textarea" wx:if="{{ type === 'textarea' }}" placeholder="{{ placeholder }}" />
+    <view wx:if="{{ type === 'radiogroup' }}">
+      <radio-group bindchange="onRadioChange">
+        <radio 
+          wx:for="{{ radioGroup }}" 
+          wx:key="index" 
+          checked="{{ value === item.value ? true : false }}" 
+          style="margin-right: {{ index === radioGroup.length - 1 ? '0' : '30rpx' }};" 
+          value="{{ item.value }}" 
+          color="#ffa766"
+          >
+          {{ item.label }}
+        </radio>
+      </radio-group>
+    </view>
   </view>
 </view>

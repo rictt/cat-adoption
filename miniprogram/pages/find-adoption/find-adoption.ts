@@ -1,14 +1,21 @@
-// pages/find-adoption/find-adoption.ts
-Page({
+import catModel from '../../model/cat'
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
-    fileList: [],
-    radio: "1",
-    name: '',
-    gender: '',
+    name: '猫咪昵称',
+    breed: '中华田园猫',
+    gender: 0,
+    age: '3个月大',
+    imgList: [],
+    adoptionAddress: [],
+    adoptionAddressText: '请选择',
+    needReturnVisit: true,
+    needContract: true,
+    desc: '详细描述',
+    adoptionDesc: '领养描述',
+    isVaccinated: false,
+    isSterilization: true,
+
     // sb小程序不支持obj.key model绑定
     formKeys: ['name', 'gender'],
     formRules: {
@@ -27,29 +34,27 @@ Page({
     }
   },
   onLoad() {
-
   },
   onChange() {
-
   },
 
   afterRead(event) {
     const files = event.detail.file;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    this.setData({ fileList: files })
+    this.setData({ imgList: files })
     this.uploadToCloud()
   },
 
   uploadToCloud() {
-    const { fileList } = this.data;
-    if (!fileList.length) {
+    const { imgList } = this.data;
+    if (!imgList.length) {
       return wx.showToast({ title: '请选择图片', icon: 'none' });
     }
-    const uploadTasks = fileList.map((file, index) => this.uploadFilePromise(`my-photo${index}.png`, file));
+    const uploadTasks = imgList.map((file, index) => this.uploadFilePromise(`cat/${Date.now()}-${index}.png`, file));
     Promise.all(uploadTasks)
       .then(data => {
         const newFileList = data.map(item => ({ url: item.fileID }));
-        this.setData({ fileList: newFileList });
+        this.setData({ imgList: newFileList });
       })
       .catch(e => {
         wx.showToast({ title: '上传失败', icon: 'none' });
@@ -64,12 +69,73 @@ Page({
     });
   },
 
-  onClickSubmit() {
-    wx.showToast({
-      title: '请填写完整',
-      icon: 'none' 
+  addressChange(e) {
+    console.log(e)
+    const value = e.detail.value
+    this.setData({
+      adoptionAddress: value,
+      adoptionAddressText: value.join(''),
     })
-    this.validate()
+  },
+
+  onRadioChange(e) {
+    const { key } = e.target.dataset
+    const value = e.detail.value
+    this.setData({
+      [key]: value
+    })
+  },
+
+  async onClickSubmit() {
+    // setTimeout(())
+    const keys = [
+      'name', 'gender', 'imgList', 'isVaccinated',
+      'isSterilization', 'desc', 'adoptionAddress',
+      'needReturnVisit', 'needContract', 'adoptionDesc',
+      'username', 'contact'
+    ]
+    const form = {}
+    for (const key of keys) {
+      const value = this.data[key]
+      if (typeof value === 'boolean' || (typeof value === 'number' && value === 0)) {
+        continue
+      }
+      if (!value || (Array.isArray(value) && !value.length)) {
+        console.error(key + ' is not complete!')
+        console.log(form)
+        wx.showToast({
+          title: '请填写完整',
+          icon: 'none' 
+        })
+        return
+      }
+      form[key] = value
+    }
+    console.log(form)
+
+    wx.showLoading({
+      title: '正在提交',
+    })
+    try {
+      await catModel.insert(form)
+    } catch (e) {
+      console.log(e)
+    }
+    wx.hideLoading()
+    wx.showToast({
+      title: '提交成功',
+      icon: 'none',
+      image: '',
+      duration: 1500,
+      mask: false,
+      success: (result) => {
+        setTimeout(() => {
+          wx.switchTab({
+            url: '/pages/index/index',
+          });
+        }, 1000)
+      },
+    });
   },
 
   validate() {

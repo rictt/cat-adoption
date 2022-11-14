@@ -1,6 +1,6 @@
 <view class="wrapper">
   <view class="cat-cover">
-    <c-swiper interval="{{ 2000 }}" autoplay="{{ true }}" list="{{ cat.images }}" />
+    <c-swiper interval="{{ 2000 }}" autoplay="{{ true }}" list="{{ cat.imgList }}" />
   </view>
 </view>
 
@@ -51,28 +51,23 @@
 
       <view class="info-item">
         <view class="info-item-label">领养地址</view>
-        <view class="info-item-value">广州市天河</view>
+        <view class="info-item-value">{{ cat.adoptionAddress  }}</view>
       </view>
 
-      <view class="info-item">
-        <view class="info-item-label">希望领养地区</view>
-        <view class="info-item-value">广州市天河</view>
-      </view>
-        
     </view>
   </c-card>
 
-  <c-card title="TA的简介" content="需要同城领养，不接受异地">
+  <c-card title="TA的简介">
+    <view slot="content">
+      {{ cat.desc }}
+    </view>
   </c-card>
 
   <c-card title="健康情况" content="良好" />
 
   <c-card title="领养条件">
     <view slot="content">
-      <view>1、需要广州市同城</view>
-      <view>2、需要定时返照，视频，确保不会随意抛弃</view>
-      <view>3、拒绝学生党，希望对方有稳定的工作，住所</view>
-      <view>4、一定要封窗！！！！</view>
+      {{ cat.adoptionDesc }}
     </view>
   </c-card>
 </view>

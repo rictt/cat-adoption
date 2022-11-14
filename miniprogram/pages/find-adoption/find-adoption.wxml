@@ -1,17 +1,32 @@
 <view class="form-card">
   <view class="card-title">基本信息</view>  
   <view class="card-content">
-    <c-form-item label="送养人" required type="input" placeholder="请输入昵称" />
-    <c-form-item label="猫咪性别" required>
-      <view>
-        <radio-group>
-          <radio style="margin-right: 30rpx;" color="#ffa766">小王子</radio>
-          <radio color="#ffa766">小公主</radio>
-        </radio-group>
-      </view>
+    <c-form-item label="猫咪姓名" model:value="{{ name }}" required type="input" />
+    <c-form-item label="品种" model:value="{{ breed }}" required type="input" />
+    <c-form-item label="猫咪性别" required 
+      type="radiogroup" 
+      model:value="{{ gender }}"
+      radioGroup="{{ [{ value: 0, label: '小王子' }, { value: 1, label: '小公主' }] }}"
+    >
     </c-form-item>
-    <c-form-item required type="input" label="猫咪年龄" placeholder="几个月/几年大" />
+    <c-form-item label="已打疫苗" required
+      type="radiogroup"
+      model:value="{{ isVaccinated }}"
+      radioGroup="{{ [{ value: true, label: '是' }, { value: false, label: '否' }] }}"
+      >
+    </c-form-item>
+    <c-form-item label="已节育" required
+      type="radiogroup"
+      model:value="{{ isSterilization }}"
+      radioGroup="{{ [{ value: true, label: '是' }, { value: false, label: '否' }] }}"
+      >
+    </c-form-item>
+    <c-form-item required model:value="{{ age }}" type="input" label="猫咪年龄" placeholder="几个月/几年大" />
+    <c-form-item label="猫咪近照" required>  
+      <van-uploader accept="image" deletable multiple file-list="{{ imgList }}" bind:after-read="afterRead" />
+    </c-form-item>
     <c-form-item 
+      model:value="{{ desc }}"
       class="empty-bottom-cls"
       type="textarea" 
       label="猫咪描述" 
@@ -27,50 +42,31 @@
     <c-form-item label="领养地址" required>
       <picker mode="region" bindchange="addressChange">
         <view style="color: #666;" selectable="false" space="false" decode="false">
-          请选择
+          {{ adoptionAddressText }}
         </view>
       </picker>
     </c-form-item>
-    <c-form-item label="回访" required>
-      <view>
-        <radio-group>
-          <radio style="margin-right: 30rpx;" color="#ffa766">定期回访</radio>
-          <radio color="#ffa766">不需要</radio>
-        </radio-group>
-      </view>
+    <c-form-item label="回访" required
+      type="radiogroup"
+      model:value="{{ needReturnVisit }}"
+      radioGroup="{{ [{ value: true, label: '需要' }, { value: false, label: '不需要' }] }}"
+      >
     </c-form-item>
-    <c-form-item class="parentClass" label="签订协议" required>
-      <view>
-        <radio-group>
-          <radio style="margin-right: 30rpx;" color="#ffa766">需要</radio>
-          <radio color="#ffa766">不需要</radio>
-        </radio-group>
-      </view>
+    <c-form-item class="parentClass" label="签订协议" required
+      type="radiogroup"
+      model:value="{{ needContract }}"
+      radioGroup="{{ [{ value: true, label: '需要' }, { value: false, label: '不需要' }] }}"
+      >
     </c-form-item>
-    <c-form-item label="详细要求补充" class="empty-bottom-cls" required type="textarea" placeholder="请填写完整领养要求" />
-  </view>
-</view>
-
-<view class="form-card radius">
-  <view class="card-title">上传图片</view>  
-  <view class="card-content">
-    <c-form-item class="empty-bottom-cls" label="选择图片" required>  
-      <van-uploader accept="image" multiple file-list="{{ fileList }}" bind:after-read="afterRead" />
-    </c-form-item>
+    <c-form-item label="详细要求补充" model:value="{{ adoptionDesc }}" class="empty-bottom-cls" required type="textarea" placeholder="请填写完整领养要求" />
   </view>
 </view>
 
 <view class="form-card radius" style="padding-bottom: 110rpx">
   <view class="card-title">联系方式</view>  
   <view class="card-content">
-    <c-form-item label="联系号码" placeholder="微信/QQ/手机" required />
-    <c-form-item class="empty-bottom-cls" label="所在地" required>
-      <picker mode="region" bindchange="addressChange">
-        <view style="color: #666;" selectable="false" space="false" decode="false">
-          请选择
-        </view>
-      </picker>
-    </c-form-item>
+    <c-form-item label="送养人" model:value="{{ username }}" required type="input" placeholder="请输入昵称" />
+    <c-form-item label="联系号码" model:value="{{ contact }}" placeholder="微信/QQ/手机" type="input" required />
   </view>
 </view>
 

@@ -1,29 +1,20 @@
+import Base from './base'
 import { User } from '/types/model'
 
+let $collection = 'user'
 
-class UserModel {
-  $collection = 'user'
-  db = undefined
-  model = undefined
+class UserModel extends Base {
 
-  getModel() {
-    let db = this.db
-    if (!db) {
-      this.db = wx.cloud.database()
-    }
-    let model = this.model
-    if (!model) {
-      this.model = this.db.collection(this.$collection)
-    }
-    return this.model
+  constructor() {
+    super($collection)
   }
 
   login() {
-    return this.getModel().get()
+    return this.model.get()
   }
   
   async getUserInfo(openId): Promise<User> {
-    const result = await this.getModel().where({ openId }).get()
+    const result = await this.model.where({ openId }).get()
     const { data } = result
     if (data && data[0]) {
       return data[0]
@@ -35,7 +26,7 @@ class UserModel {
     const { openId } = userInfo
     const result = await this.getUserInfo(openId)
     if (!result) {
-      const flag = await this.getModel().add({
+      const flag = await this.model.add({
         data: {
           ...userInfo,
           createTime: Date.now()
