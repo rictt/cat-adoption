@@ -15,7 +15,11 @@ Page({
         src: "https://mmbiz.qpic.cn/mmbiz_jpg/2FcICaCWCnU41nInW02HzMT3vnj4ibdscFKuNmdRA69tQDpbPdpsZpm9KBkviaGusWnibPGo3TKkZQuQC94H0zhqA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
       }
     ],
-    cats: []
+    cats: [],
+    pageNum: 1,
+    pageSize: 5,
+    noMoreData: false,
+    loading: false
   },
 
   onLoad() {
@@ -23,12 +27,23 @@ Page({
   },
 
   async getList(params = { pageSize: 5, pageNum: 1 }) {
+    if (this.data.noMoreData) return
+    this.setData({
+      loading: true
+    })
     try {
       const list = await catModel.getList(params)
-      console.log('get list')
-      console.log(list)
+      if (!list || !list.length) {
+        this.setData({
+          noMoreData: true,
+          loading: false
+        })
+        return
+      }
       this.setData({
-        cats: this.data.cats.concat(list)
+        noMoreData: false,
+        cats: this.data.cats.concat(list),
+        loading: false
       })
     } catch (e) {
       console.log(e)
@@ -44,15 +59,19 @@ Page({
 
   onReachBottom() {
     console.log('on reacth bottom')
-    const cats = this.data.cats
-    for (let i = 0; i < 5; i++) {
-      const newCat = cats[Math.floor(Math.random() * cats.length)]
-      newCat.id = Number(newCat.id) + cats.length + i + 1
-      cats.push(newCat)
-    }
     this.setData({
-      cats
+      pageNum: this.data.pageNum + 1
     })
+    this.getList({ pageNum: this.data.pageNum, pageSize: this.data.pageSize })
+    // const cats = this.data.cats
+    // for (let i = 0; i < 5; i++) {
+    //   const newCat = cats[Math.floor(Math.random() * cats.length)]
+    //   newCat.id = Number(newCat.id) + cats.length + i + 1
+    //   cats.push(newCat)
+    // }
+    // this.setData({
+    //   cats
+    // })
   },
 
   addressChange(e) {

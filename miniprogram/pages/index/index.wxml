@@ -34,6 +34,8 @@
       <cat-info class="cats-item" data-id="{{ item._id }}" wx:for="{{ cats }}" cat="{{ item }}" wx:key="index" bindtap="onClickCatItem">
       </cat-info>
     </view>
+    <view wx:if="{{ loading }}" class="no-more-data">加载中...</view>
+    <view wx:if="{{ noMoreData }}" class="no-more-data">没有更多数据了～</view>
   </view>
 
 </view>
