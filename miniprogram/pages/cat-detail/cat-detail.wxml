@@ -79,18 +79,26 @@
       <view class="btn-text">收藏</view>
     </view>
   </view>
-  <view class="btns-right" bindtap="onClickApply">我要申请</view>
+  <view wx:if="{{ !cat.isApply }}" class="btns-right" bindtap="onClickApply">我要申请</view>
+  <view wx:if="{{ cat.isApply }}" class="btns-right" bindtap="onClickApply">查看联系</view>
 </view>
 
-<c-popup visible="{{ applyModalVisible }}" title="领养猫须知" okText="现在申请" bindonConfirm="onConfirm">
+<c-popup visible="{{ applyModalVisible }}" title="领养须知" okText="现在申请" bindonConfirm="onConfirm">
   <view class="content-popup" slot="content">
-    <view>1.独立经济能力，稳定住所，学生领养需要家长申请。</view>
-    <view>2.同住成员，住处房东的认可同意</view>
-    <view>3.全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知</view>
-    <view>4.全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知</view>
-    <view>5.全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知全屋封网，确保猫咪在一个全封网环境内生活，详细封王要求查阅封王须知</view>
-    <view>7.阿道夫非法所得反反复复方法</view>
-    <view>9.阿道夫非法所得反反复复方法</view>
+    <view>1.已年满18岁，有固定的住所和一定的经济能力。</view>
+    <view>2.领养前，家庭成员一致同意。</view>
+    <view>3.愿意出资金用于它们的生活和可能得病需要治疗的费用。</view>
+    <view>4.全屋封网，确保猫咪在一个全封网环境内生活，详细封网要求请查阅封网教程。</view>
+    <view>5.有足够的耐心。接受猫咪不同的习惯，掉毛，刨家具等。</view>
+    <view>6.定期给宠物驱虫，洗澡，吃正规的猫粮；适龄时为其绝育等。</view>
+    <view>7.接受领养后续适时的回访，拍摄照片或者视频等。</view>
+  </view>
+</c-popup>
+
+<c-popup visible="{{ applySuccessModal }}" okText="复制并关闭" title="联系方式" bindonConfirm="onCopy">
+  <view class="success-popup" slot="content">
+    <view>联系人：{{ cat.username }}</view>
+    <view>联系方式：{{ cat.contact }}</view>
   </view>
 </c-popup>
 

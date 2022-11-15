@@ -1,10 +1,12 @@
 <view class="read-wrapper">
   <view class="read-card" bindtap="gotoFormPage">
-    <view class="card-title">找领养</view>    
+    <view class="card-title">送养须知</view>    
     <view class="card-desc">1.请注意保护自己的个人信息，注意防骗</view>
-    <view class="card-desc">2.仅提供为猫咪找新主人服务，不做任何承诺保证</view>
-    <view class="card-desc">3.在发布前请再三核对信息是否无误，避免影响领养</view>
-    <view class="card-desc">4.发布信息xxxx</view>
+    <view class="card-desc">2.猫咪照片、文字描述尽量清晰</view>
+    <view class="card-desc">3.如实告知领养人猫咪的健康情况（是否体检/绝育/疫苗等）</view>
+    <view class="card-desc">4.耐心、礼貌和领养人进行沟通领养事宜，判断领养人是否适合领养</view>
+    <view class="card-desc">5.约定好见面时间、地点后，遵守承诺，不轻易改动</view>
+    <view class="card-desc">6.请注意财产及人身安全，谨防诈骗</view>
     <view class="card-icon">
       <text class="card-icon-text">前往填写</text>
       <image src="/images/arrow-right.png" class="card-icon-arrow"  />

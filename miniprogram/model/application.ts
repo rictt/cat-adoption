@@ -1,23 +1,32 @@
 import Base from './base'
 import { Cat } from '../types/model'
-import applicationModel from './application'
 
-const app = getApp()
+let $collection = 'application'
 
-let $collection = 'cat'
-
-class CatModel extends Base {
+class ApplicationModel extends Base {
 
   constructor() {
     super($collection)
   }
 
+  async find(form) {
+    const result = await this.model.where({
+      ...form
+    }).get()
+    return result.data
+  }
+
   async insert(form) {
+    const data = await this.find(form)
+    if (data && data.length) {
+      throw '已存在，重复提交'
+    }
     form.createTime = Date.now()
     this.model.add({
       data: form
     })
   }
+
 
   async getList(params = { pageSize: 5, pageNum: 1 }): Promise<Cat[]> {
     const { pageSize, pageNum } = params
@@ -36,18 +45,11 @@ class CatModel extends Base {
   async getCat(id): Promise<Cat|undefined> {
     const { data } = await this.model.where({ _id: id }).get()
     if (data && data.length) {
-      const applicationRecord = await applicationModel.find({ 
-        catId: id, openId: app.globalData.openId
-      })
-      if (applicationRecord && applicationRecord.length) {
-        data[0].isApply = true
-      }
       return data[0]
     }
-
     return undefined
   }
 }
 
 
-export default new CatModel()
+export default new ApplicationModel()

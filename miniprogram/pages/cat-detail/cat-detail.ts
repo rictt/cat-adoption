@@ -1,4 +1,5 @@
 import catModel from '../../model/cat'
+import applicationModel from '../../model/application'
 
 const app = getApp()
 
@@ -7,6 +8,7 @@ Page({
     bottom: app.globalData.safeAreaHeight,
     catId: null,
     applyModalVisible: false,
+    applySuccessModal: false,
     cat: {}
   },
 
@@ -35,17 +37,73 @@ Page({
   },
 
   onClickApply() {
-    console.log('click')
-    console.log(this.data.cat)
-    this.setData({
-      applyModalVisible: true
-    })
+    if (this.data.cat.isApply) {
+      this.setData({
+        applySuccessModal: true
+      })
+    } else {
+      this.setData({
+        applyModalVisible: true
+      })
+    }
   },
 
-  onConfirm() {
-    this.setData({
-      applyModalVisible: false
+  async onConfirm() {
+    wx.showLoading({
+      title: '正在提交',
+      mask: true,
     })
+
+    let error
+    try {
+      await applicationModel.insert({
+        catId: this.data.cat._id,
+        openId: app.globalData.openId
+      })
+    } catch (e) {
+      error = e
+      wx.showToast({
+        title: e,
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      });
+    } finally {
+      wx.hideLoading();
+    }
+    
+      
+    this.setData({
+      applyModalVisible: false,
+      applySuccessModal: !error
+    })
+  },
+  onCopy() {
+    wx.setClipboardData({
+      data: this.data.cat.contact,
+      success: (result) => {
+        wx.showToast({
+          title: '复制成功',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+          success: (result) => {
+            setTimeout(() => {
+              this.setData({
+                applySuccessModal: false
+              })
+            }, 500)
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+          
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
 
   onReady() {

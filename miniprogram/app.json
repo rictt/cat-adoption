@@ -33,7 +33,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "宠物帮 | 云爹妈中心",
+    "navigationBarTitleText": "云爹妈中心",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
