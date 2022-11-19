@@ -15,7 +15,7 @@
       radioGroup="{{ [{ value: '10', label: '是' }, { value: '11', label: '否' }, { value: '12', label: '不清楚'}] }}"
       >
     </c-form-item>
-    <c-form-item label="已节育" required
+    <c-form-item label="已绝育" required
       type="radiogroup"
       model:value="{{ isSterilization }}"
       radioGroup="{{ [{ value: '10', label: '是' }, { value: '11', label: '否' }, { value: '12', label: '不清楚'}] }}"

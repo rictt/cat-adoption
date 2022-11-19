@@ -13,12 +13,12 @@
       <text class="cols-item-text">领取协议</text>
     </view>
     <view class="cols-item">
-      <image class="cols-item-image" src="/images/index-col-3.png" />
+      <image class="cols-item-image" src="/images/breed-bag.png" />
       <text class="cols-item-text">常见知识</text>
     </view>
     <view class="cols-item">
-      <image class="cols-item-image" src="/images/index-col-2.png" />
-      <text class="cols-item-text">占位4</text>
+      <image class="cols-item-image" src="/images/index-col-3.png" />
+      <text class="cols-item-text">吸猫专栏</text>
     </view>
   </view>
 

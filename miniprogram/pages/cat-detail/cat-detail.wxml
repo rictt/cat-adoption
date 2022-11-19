@@ -22,11 +22,11 @@
         </view>
         <view class="icon-item">
           <image class="icon-image" src="/images/qiu.png"></image>
-          <text class="icon-text">{{ cat.isSterilization ? '已绝育' : '未绝育' }}</text>
+          <text class="icon-text">{{ cat.isSterilization === '10' ? '已绝育' : '未绝育' }}</text>
         </view>
         <view class="icon-item">
           <image class="icon-image" src="/images/yimiao.png"></image>
-          <text class="icon-text">{{ cat.isVaccinated ? '已打疫苗' : '未打疫苗' }}</text>
+          <text class="icon-text">{{ cat.isVaccinated === '10' ? '已打疫苗' : '未打疫苗' }}</text>
         </view>
         <view class="icon-item">
         </view>

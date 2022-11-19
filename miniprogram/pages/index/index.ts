@@ -42,12 +42,34 @@ Page({
       }
       this.setData({
         noMoreData: false,
-        cats: this.data.cats.concat(list),
+        cats: this.data.cats.concat(this.createTags(list)),
         loading: false
       })
     } catch (e) {
       console.log(e)
     }
+  },
+
+  createTags(list) {
+    const keywords = ['亲人', '已驱虫', '活泼', '有猫德', '胆小', '性格很好', '流浪猫']
+    list.forEach(item => {
+      const { gender, age, breed, desc, isSterilization, isVaccinated, adoptionAddress } = item
+      item.tags = []
+      item.tags.push(age)
+      item.tags.push(gender === '0' ? '小王子' : '小公主')
+      item.tags.push(breed)
+      item.tags.push(isSterilization === '10' ? '已绝育' : '未绝育')
+      item.tags.push(isVaccinated === '10' ? '已打疫苗' : '未打疫苗')
+      item.tags.push(adoptionAddress[1])
+      if (desc) {
+        keywords.forEach(key => {
+          if (desc.indexOf(key) > -1) {
+            item.tags.push(key)
+          }
+        })
+      }
+    })
+    return list
   },
 
   onClickCatItem(e) {
