@@ -1,4 +1,6 @@
 
+import { User } from '/types/model'
+
 App({
   globalData: {
     safeAreaHeight: 0,
@@ -20,9 +22,11 @@ App({
       env: 'cat-adoption-dev-5fjfdgk22f7800a',
       traceUser: true,
     });
-
+    
     this.getOpenId()
     this.getPageInfo()
+
+    this.getUser()
   },
 
   getOpenId() {
@@ -50,13 +54,17 @@ App({
     })
   },
 
-  async getUser() {
+  async getUser(): Promise<User> {
+    // if (this.globalData.userInfo) {
+    //   return this.globalData.userInfo
+    // }
     const userModel = require('./model/user').default
     const result = await userModel.getUserInfo(this.globalData.openId)
     if (result) {
       this.globalData.userInfo = result
       wx.setStorageSync('userInfo', JSON.stringify(result))
     }
+    return result || this.globalData.userInfo
   },
 
   getPageInfo() {

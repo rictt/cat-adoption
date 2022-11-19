@@ -17,4 +17,12 @@ export default class Base {
     this._model = this.db.collection(this.$collection)
     return this._model
   }
+
+  isOk(response) {
+    const { errMsg } = response
+    if (errMsg.indexOf('ok') > -1) {
+      return true
+    }
+    return false
+  }
 }

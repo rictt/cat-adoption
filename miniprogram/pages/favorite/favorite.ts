@@ -1,10 +1,40 @@
+import catModel from '../../model/cat'
+
+const app = getApp()
+
 Page({
-
   data: {
-    cats: [1, 2, 3, 4, 6]
+    cats: []
   },
+
   onLoad() {
-
+    this.getFavoriteList()
   },
 
+  async getFavoriteList() {
+    wx.showLoading({
+      mask: true,
+    });
+      
+    const userInfo = await app.getUser()
+    const { favoriteList } = userInfo
+    
+    const tasks = []
+
+    favoriteList.forEach(item => {
+      tasks.push(catModel.getCat(item))
+    })
+
+    const result = await Promise.all(tasks)
+    const cats = result.map(e => {
+      return {
+        desc: e.desc,
+        cover: e.imgList && e.imgList[0].url
+      }
+    })
+    wx.hideLoading()
+    this.setData({
+      cats
+    })
+  }
 })

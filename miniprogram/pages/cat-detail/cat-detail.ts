@@ -1,4 +1,5 @@
 import catModel from '../../model/cat'
+import userModel from '../../model/user'
 import applicationModel from '../../model/application'
 
 const app = getApp()
@@ -12,10 +13,11 @@ Page({
     cat: {},
     countDown: 10,
     countDownText: "(9s)",
-    canNextConfirm: false
+    canNextConfirm: false,
+    isFavorite: false
   },
 
-  onLoad(options) {
+  async onLoad(options) {
     if (options.id) {
       this.setData({
         catId: options.id
@@ -31,9 +33,13 @@ Page({
     });
     const id = this.data.catId
     const data = await catModel.getCat(id)
+    const { favoriteList } = await app.getUser()
     this.setData({
-      cat: data
+      cat: data,
+      isFavorite: favoriteList && favoriteList.includes(id)
     })
+
+
     setTimeout(() => {
       wx.hideLoading();
     }, 1000)
@@ -137,28 +143,22 @@ Page({
 
   },
 
-  onShow() {
-
-  },
-
-  onHide() {
-
-  },
-
-  onUnload() {
-
-  },
-
-  onPullDownRefresh() {
-
-  },
-
-  onReachBottom() {
-
-  },
-
-
-  onShareAppMessage() {
-
+  async addFavorite() {
+    if (this.data.isFavorite) return
+    wx.showLoading({
+      mask: true,
+    });
+    try {
+      await userModel.addFavorite(this.data.catId)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      this.setData({
+        isFavorite: true
+      })
+      setTimeout(() => {
+        wx.hideLoading();
+      }, 500)
+    }
   }
 })

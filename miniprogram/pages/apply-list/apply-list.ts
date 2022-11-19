@@ -24,7 +24,7 @@ Page({
     const data = await applicationModel.getList()
     data.forEach(item => {
       if (item.imgList &&item.imgList.length) {
-        item.imgList = item.imgList.map(e => e.url)
+        item.cover = item.imgList[0].url
       }
     })
     this.setData({

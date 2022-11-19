@@ -6,6 +6,7 @@ export interface User {
   province: string
   gender: number
   avatarUrl: string
+  favoriteList: string[]
 }
 
 export interface Cat {

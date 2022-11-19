@@ -74,9 +74,10 @@
       <image class="btn-icon" src="/images/index-col-1.png"></image>
       <view class="btn-text">分享</view>
     </view>
-    <view class="btns-left-item">
+    <view class="btns-left-item" bindtap="addFavorite">
       <image class="btn-icon" src="/images/index-col-1.png"></image>
-      <view class="btn-text">收藏</view>
+      <view class="btn-text" wx:if="{{ !isFavorite }}">收藏</view>
+      <view class="btn-text" wx:else>已收藏</view>
     </view>
   </view>
   <view wx:if="{{ !cat.isApply }}" class="btns-right" bindtap="onClickApply">我要申请</view>
