@@ -11,6 +11,13 @@ Page({
     this.getFavoriteList()
   },
 
+  goToCatPage(e) {
+    const { id } = e.detail
+    wx.navigateTo({
+      url: '/pages/cat-detail/cat-detail?id=' + id
+    })
+  },
+
   async getFavoriteList() {
     wx.showLoading({
       mask: true,
@@ -28,6 +35,7 @@ Page({
     const result = await Promise.all(tasks)
     const cats = result.map(e => {
       return {
+        id: e._id,
         desc: e.desc,
         cover: e.imgList && e.imgList[0].url
       }

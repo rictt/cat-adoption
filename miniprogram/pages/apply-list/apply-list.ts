@@ -9,6 +9,12 @@ Page({
     this.getList()
   },
 
+  goToCatPage(e) {
+    const { catId } = e.detail
+    wx.navigateTo({
+      url: '/pages/cat-detail/cat-detail?id=' + catId
+    })
+  },
 
   async getList() {
     wx.showLoading({
@@ -30,6 +36,9 @@ Page({
     this.setData({
       cats: data
     })
+
+    console.log('cats data')
+    console.log(data)
 
     setTimeout(() => {
       wx.hideLoading();

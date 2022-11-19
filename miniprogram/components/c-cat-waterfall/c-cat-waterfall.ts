@@ -24,6 +24,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onClick(e) {
+      const index = e.currentTarget.dataset.index
+      const cat = this.data.list[index]
+      this.triggerEvent('click', cat)
+    }
   }
 })

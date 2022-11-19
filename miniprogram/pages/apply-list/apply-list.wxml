@@ -1,1 +1,1 @@
-<c-cat-waterfall list="{{ cats }}" />
+<c-cat-waterfall list="{{ cats }}" bind:click="goToCatPage" />
