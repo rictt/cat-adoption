@@ -33,9 +33,13 @@ Page({
       name: ''
     }
   },
-  onLoad() {
-  },
-  onChange() {
+
+  onShareAppMessage() {
+    return {
+      title: '送养须知【小狸花一家】',
+      path: '/pages/find-adoption/find-adoption',
+      imageUrl: ''
+    }
   },
 
   afterRead(event) {
@@ -186,5 +190,7 @@ Page({
       })
       
     })
-  }
+  },
+
+  
 })

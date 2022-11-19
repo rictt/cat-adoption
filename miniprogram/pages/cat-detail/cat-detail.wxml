@@ -69,11 +69,13 @@
 </view>
 
 <view class="bottom-btns" style="padding-bottom: {{ bottom }}rpx">
-  <view class="btns-left">
-    <view class="btns-left-item">
-      <image class="btn-icon" src="/images/index-col-1.png"></image>
-      <view class="btn-text">分享</view>
-    </view>
+  <view class="btns-left" bindtap="goShare">
+    <button class="btns-open-button" open-type="share">
+      <view class="btns-left-item">
+          <image class="btn-icon" src="/images/index-col-1.png"></image>
+          <view class="btn-text">分享</view>
+      </view>
+    </button>
     <view class="btns-left-item" bindtap="addFavorite">
       <image class="btn-icon" src="/images/index-col-1.png"></image>
       <view class="btn-text" wx:if="{{ !isFavorite }}">收藏</view>

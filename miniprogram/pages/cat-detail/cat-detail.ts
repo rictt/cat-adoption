@@ -17,6 +17,19 @@ Page({
     isFavorite: false
   },
 
+  onShareAppMessage() {
+    const { cat } = this.data
+    const { _id, breed, adoptionAddress, age, name } = cat
+    return {
+      title: `【${adoptionAddress[1]}】的${age}${breed}毛孩子${name}正在等待领养`,
+      path: '/pages/cat-detail/cat-detail?id=' + _id,
+      imageUrl: ''
+    }
+  },
+
+  goShare() {
+  },
+
   async onLoad(options) {
     if (options.id) {
       this.setData({

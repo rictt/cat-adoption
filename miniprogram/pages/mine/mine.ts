@@ -95,5 +95,13 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '送养须知【小狸花一家】',
+      path: '/pages/find-adoption/find-adoption',
+      imageUrl: ''
+    }
   }
 })

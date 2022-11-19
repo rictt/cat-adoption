@@ -85,5 +85,13 @@ Page({
       })
       wx.hideLoading()
     }, 1000)
+  },
+
+  onShareAppMessage() {
+    return {
+      title: '【小狸花一家】小程序',
+      path: '/pages/index/index',
+      imageUrl: ''
+    }
   }
 });
