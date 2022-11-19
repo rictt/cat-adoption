@@ -10,7 +10,7 @@
 
     <view wx:if="{{ okText || cancelText }}" class="c-popup-btns">
       <view wx:if="{{ cancelText }}" bindtap="onCancel" class="c-popup-btn cancel">{{ cancelText }}</view>
-      <view wx:if="{{ okText }}" bindtap="onConfirm" class="c-popup-btn ok">{{ okText }}</view>
+      <view wx:if="{{ okText }}" bindtap="onConfirm" class="c-popup-btn ok {{ disabled ? 'disabled' : ''}}">{{ okText }}</view>
     </view>
   </view>
 

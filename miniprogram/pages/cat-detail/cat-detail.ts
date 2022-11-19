@@ -9,7 +9,10 @@ Page({
     catId: null,
     applyModalVisible: false,
     applySuccessModal: false,
-    cat: {}
+    cat: {},
+    countDown: 10,
+    countDownText: "(9s)",
+    canNextConfirm: false
   },
 
   onLoad(options) {
@@ -42,13 +45,37 @@ Page({
         applySuccessModal: true
       })
     } else {
+      this.startCountDown()
       this.setData({
+        countDown: 9,
         applyModalVisible: true
       })
     }
   },
 
+  startCountDown() {
+    let val = this.data.countDown--
+    if (val <= 0) {
+      clearTimeout(this.timer)
+      this.timer = null
+      this.setData({
+        countDownText: '',
+        countDown: -1,
+        canNextConfirm: true
+      })
+      return
+    }
+    this.setData({
+      countDown: this.data.countDown--,
+      countDownText: `(${val}s)`
+    })
+    this.timer = setTimeout(() => {
+      this.startCountDown()
+    }, 1000)
+  },
+
   async onConfirm() {
+    if (!this.data.canNextConfirm) return
     wx.showLoading({
       title: '正在提交',
       mask: true,
@@ -72,10 +99,10 @@ Page({
       wx.hideLoading();
     }
     
-      
     this.setData({
       applyModalVisible: false,
-      applySuccessModal: !error
+      applySuccessModal: !error,
+      'cat.isApply': true
     })
   },
   onCopy() {

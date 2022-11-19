@@ -13,7 +13,7 @@ export interface Cat {
   age: string
   gender: number
   desc: string
-  imgList: { url: string }[]
+  imgList: { url: string }[] | string[]
   adoptionAddress: string[]
   adoptionDesc: string
   contact: string

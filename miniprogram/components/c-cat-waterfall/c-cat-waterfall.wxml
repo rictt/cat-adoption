@@ -1,0 +1,11 @@
+<view class="water-list">
+  <view class="water-item" wx:for="{{ list }}" wx:key="{{ index }}">
+    <image class="water-img" src="{{ item.imgList && item.imgList[0] }}" mode="aspectFill" />
+    <view class="water-text">{{ item.desc || '暂无数据～'}}</view>
+  </view>
+  <view class="water-item space">
+  </view>
+</view>
+
+<view class="water-tips">{{ tipText }}</view>
+  

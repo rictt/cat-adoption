@@ -1,6 +1,8 @@
 import Base from './base'
+import catModel from './cat'
 import { Cat } from '../types/model'
 
+const app = getApp()
 let $collection = 'application'
 
 class ApplicationModel extends Base {
@@ -31,24 +33,29 @@ class ApplicationModel extends Base {
   async getList(params = { pageSize: 5, pageNum: 1 }): Promise<Cat[]> {
     const { pageSize, pageNum } = params
     const { data } = await this.model
+      .where({ openId: app.globalData.openId })
       .skip((pageNum - 1) * pageSize)
       .limit(pageSize)
       .get()
-
+    
+    const tasks = []
     data.forEach(item => {
-      item.tags = ["小公主", "很粘人", "乖巧", "已打疫苗"]
-    });
+      const { catId } = item
+      tasks.push(catModel.getCat(catId))
+    })
+
+    const catDetails = await Promise.all(tasks)
+    
+    data.forEach((item, index) => {
+      const catDetail = catDetails[index]
+      const { desc, imgList } = catDetail
+      item.desc = desc || '获取失败，请稍后重试喔'
+      item.imgList = imgList || []
+    })
 
     return data
   }
 
-  async getCat(id): Promise<Cat|undefined> {
-    const { data } = await this.model.where({ _id: id }).get()
-    if (data && data.length) {
-      return data[0]
-    }
-    return undefined
-  }
 }
 
 

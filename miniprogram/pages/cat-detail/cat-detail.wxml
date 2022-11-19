@@ -83,7 +83,7 @@
   <view wx:if="{{ cat.isApply }}" class="btns-right" bindtap="onClickApply">查看联系</view>
 </view>
 
-<c-popup visible="{{ applyModalVisible }}" title="领养须知" okText="现在申请" bindonConfirm="onConfirm">
+<c-popup visible="{{ applyModalVisible }}" title="领养须知" disabled="{{ !canNextConfirm }}" okText="现在申请{{ countDownText }}" bindonConfirm="onConfirm">
   <view class="content-popup" slot="content">
     <view>1.已年满18岁，有固定的住所和一定的经济能力。</view>
     <view>2.领养前，家庭成员一致同意。</view>

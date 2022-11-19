@@ -7,6 +7,10 @@ Component({
     multipleSlots: true
   },
   properties: {
+    disabled: {
+      type: Boolean,
+      value: false
+    },
     visible: {
       type: Boolean,
       value: false,

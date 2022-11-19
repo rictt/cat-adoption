@@ -4,7 +4,10 @@
     "pages/mine/mine",
     "pages/find-adoption/find-adoption",
     "pages/cat-detail/cat-detail",
-    "pages/read-find-adoption/read-find-adoption"
+    "pages/read-find-adoption/read-find-adoption",
+    "pages/favorite/favorite",
+    "pages/apply-list/apply-list",
+    "pages/send-list/send-list"
   ],
   "tabBar": {
     "selectedColor": "#ffa766",

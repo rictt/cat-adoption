@@ -1,0 +1,1 @@
+<c-cat-waterfall list="{{ cats }}" />

@@ -7,54 +7,7 @@
     "miniprogram": {
       "list": [
         {
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        },
-        {
-          "name": "pages/getOpenId/index",
-          "pathName": "pages/getOpenId/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/deployService/index",
-          "pathName": "pages/deployService/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/selectRecord/index",
-          "pathName": "pages/selectRecord/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/sumRecordResult/index",
-          "pathName": "pages/sumRecordResult/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecord/index",
-          "pathName": "pages/updateRecord/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecordResult/index",
-          "pathName": "pages/updateRecordResult/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/updateRecordSuccess/index",
-          "pathName": "pages/updateRecordSuccess/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "cat detail",
+          "name": "毛孩子详情",
           "pathName": "pages/cat-detail/cat-detail",
           "query": "id=2fb9e2a66371d76b0117366e21b175cd",
           "launchMode": "default",
@@ -77,6 +30,20 @@
         {
           "name": "我的",
           "pathName": "pages/mine/mine",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "我的收藏",
+          "pathName": "pages/favorite/favorite",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "申请记录",
+          "pathName": "pages/apply-list/apply-list",
           "query": "",
           "launchMode": "default",
           "scene": null

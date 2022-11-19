@@ -1,0 +1,52 @@
+@import url("/app.less");
+
+.water-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.water-item {
+  width: 49%;
+  box-sizing: border-box;
+  // padding: 20rpx 24rpx;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  
+  .water-img {
+    width: 100%;
+    height: 320rpx;
+    // background-color: @primaryColor;
+    overflow: hidden;
+    background-color: rgba(255, 167, 102, .3);
+  }
+
+  .water-text {
+    margin: 20rpx 24rpx;
+    color: @helpFontColor;
+    line-height: 1.75;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  &.space {
+    // flex: 1;
+    width: 0;
+    padding: 0;
+  }
+}
+
+
+.water-tips {
+  color: @helpFontColor;
+  font-size: 14px;
+  text-align: center;
+  padding: 20rpx 0;
+}

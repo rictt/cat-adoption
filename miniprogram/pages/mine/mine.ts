@@ -63,4 +63,37 @@ Page({
     });
       
   },
+
+  goToFavoritePage() {
+    wx.navigateTo({
+      url: '/pages/favorite/favorite',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  },
+
+  goToApplyRecordPage() {
+    wx.navigateTo({
+      url: '/pages/apply-list/apply-list',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  },
+
+  goToSendRecordPage() {
+    wx.navigateTo({
+      url: '/pages/send-list/send-list',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  }
 })
