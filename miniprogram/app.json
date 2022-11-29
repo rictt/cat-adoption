@@ -10,6 +10,7 @@
     "pages/send-list/send-list"
   ],
   "tabBar": {
+    "custom": true,
     "selectedColor": "#ffa766",
     "list": [
       {

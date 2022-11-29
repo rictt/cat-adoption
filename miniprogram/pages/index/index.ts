@@ -22,6 +22,10 @@ Page({
     loading: false
   },
 
+  onShow() {
+    this.getTabBar && this.getTabBar().setData({ active: 0 })
+  },
+
   onLoad() {
     this.getList()
   },

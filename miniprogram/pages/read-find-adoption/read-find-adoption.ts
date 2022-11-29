@@ -1,18 +1,13 @@
-// pages/read-find-adoption/read-find-adoption.ts
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
+  onShow() {
+    this.getTabBar && this.getTabBar().setData({ active: 1 })
+  },
 
+  onLoad() {
   },
 
   gotoFormPage() {

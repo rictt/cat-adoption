@@ -9,6 +9,10 @@ Page({
     createTime: '请先登录',
     avatarUrl: "",
   },
+  
+  onShow() {
+    this.getTabBar && this.getTabBar().setData({ active: 2 })
+  },
 
   async onLoad() {
     let userInfo = wx.getStorageSync('userInfo')
