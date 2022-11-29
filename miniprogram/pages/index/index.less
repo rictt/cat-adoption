@@ -4,6 +4,10 @@ page {
   background-color: #fff;
 }
 
+.van-popup--bottom{
+  z-index: 10000 !important;
+}
+
 .container {
   display: block;
   width: 100%;
@@ -35,12 +39,24 @@ page {
 
 .content-wrapper {
   padding: 0 20rpx;
+  padding-bottom: 100rpx;
+}
+
+.content-query-wrapper {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20rpx;
+
+  .reset-text {
+    font-size: 13px;
+    padding-left: 10rpx;
+  }
 }
 
 .content-query {
   display: flex;
   align-items: center;
-  padding-bottom: 20rpx;
+
 
   .location-image {
     width: 30rpx;

@@ -1,4 +1,4 @@
-<van-tabbar class="tabbar" custom-class="tabbar" active="{{ active }}" bind:change="onChange" active-color="#ffa766">
+<van-tabbar placeholder class="tabbar" custom-class="tabbar" active="{{ active }}" bind:change="onChange" active-color="#ffa766">
   <van-tabbar-item class="tabbar-item" data-index="{{ index }}" wx:for="{{ tabs }}" wx:key="index">
     <image class="tab-item-image" slot="icon" src="{{ item.icon }}" mode="aspectFit" />
     <image class="tab-item-image" slot="icon-active" src="{{ item.iconActive }}" mode="aspectFit" />

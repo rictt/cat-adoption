@@ -49,7 +49,7 @@
 
       <view class="info-item">
         <view class="info-item-label">领养地址</view>
-        <view class="info-item-value">{{ cat.adoptionAddress  }}</view>
+        <view class="info-item-value">{{ cat.adoptionAddressText  }}</view>
       </view>
 
     </view>

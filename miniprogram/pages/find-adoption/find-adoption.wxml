@@ -36,15 +36,22 @@
   </view>
 </view>
 
+<van-popup show="{{ showAreaList }}" position="bottom" bind:close="onClose">
+  <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" title="选择地区" bind:confirm="onClickConfirm" />
+</van-popup>
+
 <view class="form-card radius">
   <view class="card-title">领养要求</view>  
   <view class="card-content">
     <c-form-item label="领养地址" required>
-      <picker mode="region" bindchange="addressChange">
+    <view class="address-text-wrap" bindtap="onShowAreaList">
+      {{ adoptionAddressText }}
+    </view>
+      <!-- <picker mode="region" bindchange="addressChange">
         <view style="color: #666;" selectable="false" space="false" decode="false">
           {{ adoptionAddressText }}
         </view>
-      </picker>
+      </picker> -->
     </c-form-item>
     <c-form-item label="回访" required
       type="radiogroup"

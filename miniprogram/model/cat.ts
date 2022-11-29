@@ -19,18 +19,23 @@ class CatModel extends Base {
     })
   }
 
-  async getList(params = { pageSize: 5, pageNum: 1 }): Promise<Cat[]> {
-    const { pageSize, pageNum } = params
-    const { data } = await this.model
+  async getList(params = { pageSize: 5, pageNum: 1, city: [] }): Promise<Cat[]> {
+    let { pageSize, pageNum, city } = params
+    console.log("query params")
+    console.log(params)
+    let model = this.model
+    if (city) {
+      model = await model.where({ adoptionAddress: city })
+    }
+    const { data } = await model
       .skip((pageNum - 1) * pageSize)
       .limit(pageSize)
       .get()
 
-    data.forEach(item => {
-      item.tags = ["小公主", "很粘人", "乖巧", "已打疫苗"]
-    });
-
+    console.log("query result")
+    console.log(data)
     return data
+    // let model = this.model
   }
 
   async getCat(id): Promise<Cat|undefined> {

@@ -26,8 +26,6 @@ Page({
 
   onChange(event) {
     const index = Number(event.detail)
-    console.log('index change')
-    console.log(index)
     if (index === this.data.active) {
       return
     }

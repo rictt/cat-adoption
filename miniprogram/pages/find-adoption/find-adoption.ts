@@ -1,7 +1,10 @@
 import catModel from '../../model/cat'
+import { areaList } from '@vant/area-data'
 
 Page({
   data: {
+    showAreaList: false,
+    areaList,
     name: '',
     breed: '',
     gender: '',
@@ -32,6 +35,26 @@ Page({
     formErrorMessage: {
       name: ''
     }
+  },
+
+  onShowAreaList() {
+    this.setData({ showAreaList: true })
+  },
+
+  onClose() {
+    this.setData({ showAreaList: false })
+  },
+
+  onClickConfirm(data) {
+    const { detail } = data
+    const { values } = detail
+    const codes = values.map(e => e.code)
+    const cityTexts = values.map(e => e.name) 
+    this.setData({
+      showAreaList: false,
+      adoptionAddress: codes,
+      adoptionAddressText: cityTexts
+    })
   },
 
   onShareAppMessage() {
@@ -94,7 +117,7 @@ Page({
     // setTimeout(())
     const keys = [
       'name', 'gender', 'age', 'imgList', 'isVaccinated',
-      'isSterilization', 'desc', 'adoptionAddress',
+      'isSterilization', 'desc', 'adoptionAddress', 'adoptionAddressText',
       'needReturnVisit', 'needContract', 'adoptionDesc',
       'username', 'contact', 'breed'
     ]

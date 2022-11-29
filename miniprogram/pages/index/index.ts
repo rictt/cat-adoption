@@ -1,12 +1,13 @@
 import catModel from '../../model/cat'
-
-const { envList } = require('../../envList.js')
+import { areaList } from '@vant/area-data'
 
 
 Page({
   data: {
-    areaCodes: ['广东省', '广州市', '海珠区'],
-    areaText: '广州',
+    areaList,
+    showAreaList: false,
+    queryCityCode: [],
+    areaText: '选择城市',
     indexSwiperList: [
       {
         src: "https://mmbiz.qpic.cn/mmbiz_jpg/2FcICaCWCnU41nInW02HzMT3vnj4ibdsc6tnDmLlx5KW9fnF2icibeLodicTEV44GMPnF0fRcpfazoR7IcUflguIPg/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
@@ -22,6 +23,41 @@ Page({
     loading: false
   },
 
+  resetCity() {
+    this.setData({ 
+      pageNum: 1,
+      areaText: "选择城市",
+      queryCityCode: []
+    })
+    this.getList()
+  },
+
+  onClickConfirm(data) {
+    console.log(data)
+    const { detail } = data
+    const { values } = detail
+    const codes = values.map(e => e.code)
+    const cityTexts = values.map(e => e.name) 
+    this.setData({
+      pageNum: 1,
+      noMoreData: false,
+      showAreaList: false,
+      queryCityCode: codes,
+      areaText: cityTexts.join('')
+    })
+    setTimeout(() => {
+      this.getList({ pageSize: 5, pageNum: 1 })
+    }, 100)
+  },
+
+  onTapQueryCity() {
+    this.setData({ showAreaList: true })
+  },
+  
+  onClose() {
+    this.setData({ showAreaList: false })
+  },
+
   onShow() {
     this.getTabBar && this.getTabBar().setData({ active: 0 })
   },
@@ -30,12 +66,16 @@ Page({
     this.getList()
   },
 
-  async getList(params = { pageSize: 5, pageNum: 1 }) {
+  async getList(params = { pageSize: 5, pageNum: 1 }) {      
     if (this.data.noMoreData) return
-    this.setData({
-      loading: true
-    })
+    this.setData({ loading: true })
+    const { pageNum } = params
+    const { queryCityCode } = this.data
+    if (queryCityCode && queryCityCode.length) {
+      params.city = queryCityCode[queryCityCode.length - 1]
+    }
     try {
+      wx.showLoading({ title: '加载中' });
       const list = await catModel.getList(params)
       if (!list || !list.length) {
         this.setData({
@@ -44,13 +84,17 @@ Page({
         })
         return
       }
+      const result = this.createTags(list)
+      const cats = pageNum === 1 ? result : this.data.cats.concat(result)
       this.setData({
-        noMoreData: false,
-        cats: this.data.cats.concat(this.createTags(list)),
+        cats: cats,
+        noMoreData: result.length < this.data.pageSize,
         loading: false
       })
     } catch (e) {
       console.log(e)
+    } finally {
+      wx.hideLoading();
     }
   },
 

@@ -23,13 +23,26 @@
   </view>
 
   <view class="content-wrapper">
-    <picker mode="region" value="{{ areaCodes }}" bindchange="addressChange">
+    <van-popup show="{{ showAreaList }}" position="bottom" bind:close="onClose">
+      <van-area area-list="{{ areaList }}" columns-num="{{ 2 }}" title="选择地区" bind:confirm="onClickConfirm" />
+    </van-popup>
+
+    <view class="content-query-wrapper">
+      <view class="content-query" bindtap="onTapQueryCity">
+        <image class="location-image" src="/images/location.png" />
+        <text class="location-text" selectable="false" space="false" decode="false">{{ areaText }}</text>
+        <image class="arrow-image" src="/images/arrow-right.png" />
+      </view>
+      <text class="reset-text" bindtap="resetCity">重置</text>
+    </view>
+
+    <!-- <picker mode="region" value="{{ areaCodes }}" bindchange="addressChange">
       <view class="content-query">
         <image class="location-image" src="/images/location.png" />
         <text class="location-text" selectable="false" space="false" decode="false">{{ areaText }}</text>
         <image class="arrow-image" src="/images/arrow-right.png" />
       </view>
-    </picker>
+    </picker> -->
     <view class="cats-list">
       <cat-info class="cats-item" data-id="{{ item._id }}" wx:for="{{ cats }}" cat="{{ item }}" wx:key="index" bindtap="onClickCatItem">
       </cat-info>
