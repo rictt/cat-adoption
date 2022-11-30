@@ -46,6 +46,7 @@ Page({
     });
     const id = this.data.catId
     const data = await catModel.getCat(id)
+    console.log(data)
     const { favoriteList } = await app.getUser()
     this.setData({
       cat: data,
