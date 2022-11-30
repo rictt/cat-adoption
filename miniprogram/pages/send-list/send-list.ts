@@ -1,66 +1,44 @@
-// pages/send-list/send-list.ts
+import applicationModel from '../../model/application'
+import catModel from '../../model/cat'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    cats: [],
+    pageNum: 1,
+    pageSize: 5
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad() {
-
+    this.getList()
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  goToCatPage(e) {
+    const { _id } = e.detail
+    wx.navigateTo({
+      url: '/pages/cat-detail/cat-detail?id=' + _id
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
+  async getList() {
+    wx.showLoading({ title: '加载中' })
+      
+    const params = { pageNum: this.data.pageNum, pageSize: this.data.pageSize }
+    const data = await catModel.getSendList(params)
+    data.forEach(item => {
+      if (item.imgList &&item.imgList.length) {
+        item.cover = item.imgList[0].url
+      }
+      item.status = item.status || 10
+    })
+    this.setData({
+      cats: data
+    })
 
-  },
+    console.log('cats data')
+    console.log(data)
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+    setTimeout(() => {
+      wx.hideLoading();
+    }, 500)
   }
 })

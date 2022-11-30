@@ -1,2 +1,5 @@
-<!--pages/send-list/send-list.wxml-->
-<text>pages/send-list/send-list.wxml</text>
+<c-cat-waterfall 
+  list="{{ cats }}" 
+  bind:click="goToCatPage"
+  generic:waterfall-child="waterfall-child">
+</c-cat-waterfall>

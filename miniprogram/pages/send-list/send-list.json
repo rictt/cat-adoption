@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "c-cat-waterfall": "/components/c-cat-waterfall/c-cat-waterfall",
+    "waterfall-child": "./waterfall-child/waterfall-child"
+  },
+  "navigationBarTitleText": "送养记录"
 }

@@ -14,3 +14,6 @@
 
 ## 自定义胶囊
   [链接](https://www.cnblogs.com/chenwolong/p/navigationBar.html)
+
+## TODO
+  - 针对云开发数据库API回调统一封装（统一风格，确认success，fail成功回调得到处理）

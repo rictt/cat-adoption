@@ -1,0 +1,8 @@
+<view class="btn-info" wx:if="{{ detail }}">
+  <view wx:if="{{ detail && detail.status === 10 }}" class="info-status">显示中</view>
+  <view wx:if="{{ detail && detail.status === 11 }}" class="info-status">隐藏中</view>
+
+  <view wx:if="{{ detail && detail.status === 10 }}" class="info-btn hide" catchtap="hideInfo">隐藏信息</view>
+  <view wx:if="{{ detail && detail.status === 11 }}" class="info-btn" catchtap="showInfo">设置显示</view>
+</view>
+  

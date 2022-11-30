@@ -5,6 +5,9 @@
     data-index="{{ index }}" bindtap="onClick">
     <image class="water-img" src="{{ item.cover }}" mode="aspectFill" />
     <view class="water-text">{{ item.desc || '暂无数据～'}}</view>
+    <view class="water-bottom">
+      <waterfall-child detail="{{ item }}" />
+    </view>
   </view>
   <view class="water-item space">
   </view>

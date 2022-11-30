@@ -47,6 +47,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "送养记录",
+          "pathName": "pages/send-list/send-list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

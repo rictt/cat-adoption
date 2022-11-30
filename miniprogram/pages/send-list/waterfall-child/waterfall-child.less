@@ -1,0 +1,27 @@
+@import url("/app.less");
+
+.btn-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: @helpFontColor;
+  font-size: 13px;
+  padding: 0 20rpx;
+  padding-bottom: 10rpx;
+}
+
+.info-btn {
+  // background-color: @primaryColor;
+  // border-color: @primaryColor;
+  border: 1rpx solid @primaryColor;
+  // color: #fff;
+  font-size: 12px;
+  color: @primaryColor;
+  padding: 6rpx 10rpx;
+  border-radius: 10rpx;
+
+  &.hide {
+    border-color: #ddd;
+    color: #999;
+  }
+}

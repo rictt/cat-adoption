@@ -19,10 +19,34 @@ class CatModel extends Base {
     })
   }
 
+  async updateStatus(catId, status = 10) {
+    try {
+      return await this.model
+        .where({ _id: catId })
+        .update({ data: { status }})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async getSendList(params = { pageNum: 1, pageSize: 5 }): Promise<Cat> {
+    try {
+      const { pageNum, pageSize } = params
+      const { data } = await this.model
+        .where({ _openid: app.globalData.openId })
+        .skip((pageNum - 1) * pageSize)
+        .limit(pageSize)
+        .get()
+
+      return data
+    } catch (e) {
+      console.log('get sendlist error')
+      console.log(e)
+    }
+  }
+
   async getList(params = { pageSize: 5, pageNum: 1, city: [] }): Promise<Cat[]> {
     let { pageSize, pageNum, city } = params
-    console.log("query params")
-    console.log(params)
     let model = this.model
     if (city) {
       model = await model.where({ adoptionAddress: city })
@@ -32,10 +56,7 @@ class CatModel extends Base {
       .limit(pageSize)
       .get()
 
-    console.log("query result")
-    console.log(data)
     return data
-    // let model = this.model
   }
 
   async getCat(id): Promise<Cat|undefined> {

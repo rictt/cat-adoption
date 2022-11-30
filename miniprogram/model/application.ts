@@ -48,9 +48,10 @@ class ApplicationModel extends Base {
     
     data.forEach((item, index) => {
       const catDetail = catDetails[index]
-      const { desc, imgList } = catDetail
+      const { desc, imgList, status } = catDetail
       item.desc = desc || '获取失败，请稍后重试喔'
       item.imgList = imgList || []
+      item.status = status || 10
     })
 
     return data
