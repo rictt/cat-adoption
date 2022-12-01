@@ -1,0 +1,21 @@
+<view class="question-page">
+  <view class="part-item">
+    <view class="part-item-title">猫粮选择</view>
+    <van-collapse data-key="foodQuestionsName" value="{{ foodQuestionsName }}" bind:change="onChange">
+      <van-collapse-item wx:for="{{ foodQuestions }}" wx:key="index" title="{{ item.question }}" name="{{ index }}">
+        {{ item.answer }}
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+
+  <view class="part-item">
+    <view class="part-item-title">猫粮选择</view>
+    <van-collapse data-key="foodQuestionsName2" value="{{ foodQuestionsName2 }}" bind:change="onChange">
+      <van-collapse-item wx:for="{{ foodQuestions2 }}" wx:key="index" title="{{ item.question }}" name="{{ index }}">
+        {{ item.answer }}
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+
+</view>
+  

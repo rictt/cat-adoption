@@ -21,6 +21,9 @@ Page({
   goToProtocolPage() {
     wx.navigateTo({ url: '/pages/protocol/protocol' });
   },
+  goToQuestionPage() {
+    wx.navigateTo({ url: '/pages/question/question' });
+  },
 
   resetCity() {
     this.setData({ 

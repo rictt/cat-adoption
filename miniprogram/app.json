@@ -9,7 +9,8 @@
     "pages/apply-list/apply-list",
     "pages/send-list/send-list",
     "pages/notice/notice",
-    "pages/protocol/protocol"
+    "pages/protocol/protocol",
+    "pages/question/question"
   ],
   "tabBar": {
     "custom": true,

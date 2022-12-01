@@ -12,7 +12,7 @@
       <image class="cols-item-image" src="/images/index-col-2.png" />
       <text class="cols-item-text">领取协议</text>
     </view>
-    <view class="cols-item">
+    <view class="cols-item" bindtap="goToQuestionPage">
       <image class="cols-item-image" src="/images/breed-bag.png" />
       <text class="cols-item-text">常见问题</text>
     </view>
