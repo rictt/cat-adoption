@@ -1,21 +1,13 @@
 import catModel from '../../model/cat'
 import { areaList } from '@vant/area-data'
 
-
 Page({
   data: {
     areaList,
     showAreaList: false,
     queryCityCode: [],
     areaText: '选择城市',
-    indexSwiperList: [
-      {
-        src: "https://mmbiz.qpic.cn/mmbiz_jpg/2FcICaCWCnU41nInW02HzMT3vnj4ibdsc6tnDmLlx5KW9fnF2icibeLodicTEV44GMPnF0fRcpfazoR7IcUflguIPg/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
-      },
-      {
-        src: "https://mmbiz.qpic.cn/mmbiz_jpg/2FcICaCWCnU41nInW02HzMT3vnj4ibdscFKuNmdRA69tQDpbPdpsZpm9KBkviaGusWnibPGo3TKkZQuQC94H0zhqA/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
-      }
-    ],
+    indexSwiperList: [],
     cats: [],
     pageNum: 1,
     pageSize: 5,
@@ -66,6 +58,12 @@ Page({
     this.getList()
   },
 
+  onClickSwiperItem(data) {
+    const { detail } = data
+    const { _id } = detail
+    wx.navigateTo({ url: '/pages/cat-detail/cat-detail?id=' + _id });
+  },
+
   async getList(params = { pageSize: 5, pageNum: 1 }) {      
     if (this.data.noMoreData) return
     this.setData({ loading: true })
@@ -86,6 +84,18 @@ Page({
       }
       const result = this.createTags(list)
       const cats = pageNum === 1 ? result : this.data.cats.concat(result)
+      if (!this.initSwiper) {
+        this.initSwiper = true
+        const swiperList = cats.slice(0, 3).map(e => {
+          return {
+            url: e.imgList[0].url,
+            ...e
+          }
+        })
+        this.setData({
+          indexSwiperList: swiperList
+        })
+      }
       this.setData({
         cats: cats,
         noMoreData: result.length < this.data.pageSize,

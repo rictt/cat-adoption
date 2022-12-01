@@ -36,12 +36,14 @@ Component({
 
   methods: {
     clickImage(e) {
-      if (!this.data.preview) {
-        return
-      }
       const index = e.target.dataset.index
       const list = this.data.list
       const current = list[index].url || list[index].src
+
+      if (!this.data.preview) {
+        this.triggerEvent('click', list[index])
+        return
+      }
       wx.previewImage({
         current,
         urls: list.map(e => e.url || e.src),

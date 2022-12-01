@@ -30,21 +30,25 @@
     <text class="menu-item-text">送养记录</text>
     <image class="menu-item-icon" src="/images/arrow-right.png" />
   </view>
-  <view class="menu-item">
+  <!-- <view class="menu-item">
     <image class="menu-item-icon" src="/images/location.png" />
     <text class="menu-item-text">联系客服</text>
     <image class="menu-item-icon" src="/images/arrow-right.png" />
   </view>
+  -->
   <view class="menu-item">
-    <image class="menu-item-icon" src="/images/close.png" />
-    <text class="menu-item-text">官方反馈</text>
-    <image class="menu-item-icon" src="/images/arrow-right.png" />
+    <button class="feedback-btn" open-type="feedback">
+      <image class="menu-item-icon" src="/images/find-adoption.png" />
+      <text class="menu-item-text">官方反馈</text>
+      <image class="menu-item-icon" src="/images/arrow-right.png" />
+    </button>
   </view>
-  <view class="menu-item">
+  <!-- <view class="menu-item">
     <image class="menu-item-icon" src="/images/find-adoption.png" />
     <text class="menu-item-text">关于小程序</text>
     <image class="menu-item-icon" src="/images/arrow-right.png" />
   </view>
+  -->
 </view>  
 
 <wxs src="/app.wxs" module="filter" />
