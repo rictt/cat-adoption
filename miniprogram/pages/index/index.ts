@@ -15,6 +15,13 @@ Page({
     loading: false
   },
 
+  goToNoticePage() {
+    wx.navigateTo({ url: '/pages/notice/notice' });
+  },
+  goToProtocolPage() {
+    wx.navigateTo({ url: '/pages/protocol/protocol' });
+  },
+
   resetCity() {
     this.setData({ 
       pageNum: 1,

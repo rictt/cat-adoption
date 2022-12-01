@@ -1,0 +1,14 @@
+<view class="notice-wrapper">
+  <view class="title">也许你很想领养一只宠物，但是实际可能和您想象的不太一样，所以请您一定要做好充足准备。</view>
+  <view class="notice-content">
+    <view class="notice-content-title">请认真阅读以下内容：</view>
+    <view class="notice-item">1.如果不是你本人有养宠意愿,以后宠物不是由你来负责饲养,请不要申请领养。 </view>
+    <view class="notice-item">2.你是否愿意留出资金用于它们的生活和可能得病需要的治疗费。</view>
+    <view class="notice-item">3.如果你长期出差、旅行外出，宠物需要寄养，那请暂时不要养宠。</view>
+    <view class="notice-item">4.家里其他成员是否接纳宠物？您的家人能否与与您共同照顾拥有珍惜它？</view>
+    <view class="notice-item">5.养宠是否是你长期的打算？家猫家狗的寿命通常在15-20年。您能几十年如一日地善待他吗？不因结婚生子、工作调动、家庭反对等等的个人理由而抛弃他们吗？</view>
+    <view class="notice-item">6.你是否有足够的耐心？猫猫狗狗都有各自不同的习惯，每只还有个体差异。你能接受猫咪抓沙发，玩窗帘，刨家具，掉毛吗？</view>
+    <view class="notice-item">7.当它生病的时候，您愿意付出您的时间和精力来陪伴他吗？您能够精心照顾它使它早日恢复健康？</view>
+  </view>
+</view>
+  

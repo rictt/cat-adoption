@@ -7,7 +7,9 @@
     "pages/read-find-adoption/read-find-adoption",
     "pages/favorite/favorite",
     "pages/apply-list/apply-list",
-    "pages/send-list/send-list"
+    "pages/send-list/send-list",
+    "pages/notice/notice",
+    "pages/protocol/protocol"
   ],
   "tabBar": {
     "custom": true,

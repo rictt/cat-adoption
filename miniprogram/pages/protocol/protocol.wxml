@@ -1,0 +1,13 @@
+
+<view class="protocol-wrapper">
+  <view class="text">建议每一个送养家庭都要给小可爱签领养协议</view>
+  <view class="text">通过领养协议一般可以筛选出一部分适合的人</view>
+  <view class="text">至少可以看出对方是否真的喜欢小动物善待小动物，是否愿意承担责任等等</view>
+  <view class="text">而且算是一份保障 避免不怀好意的人</view>
+  <view class="text">🧾🐈🐕‍🦺♥️</view>
+  <view class="strong">为确保猫咪被领养后健康幸福，免遭遗弃或流浪，协议如下：</view>
+
+  <image class="pdf-img" bindtap="onTapImage" src="{{ imgFileId }}" mode="widthFix"/>
+
+</view>
+  
