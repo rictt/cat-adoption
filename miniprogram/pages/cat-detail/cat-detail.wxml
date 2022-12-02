@@ -72,12 +72,13 @@
   <view class="btns-left" bindtap="goShare">
     <button class="btns-open-button" open-type="share">
       <view class="btns-left-item">
-          <image class="btn-icon" src="/images/index-col-1.png"></image>
+          <image class="btn-icon" src="/images/share.png"></image>
           <view class="btn-text">分享</view>
       </view>
     </button>
     <view class="btns-left-item" bindtap="addFavorite">
-      <image class="btn-icon" src="/images/index-col-1.png"></image>
+      <image class="btn-icon" wx:if="{{ !isFavorite }}" src="/images/favorite.png"></image>
+      <image class="btn-icon" wx:else src="/images/favorite-done.png"></image>
       <view class="btn-text" wx:if="{{ !isFavorite }}">收藏</view>
       <view class="btn-text" wx:else>已收藏</view>
     </view>
