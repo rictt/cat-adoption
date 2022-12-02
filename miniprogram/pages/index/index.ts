@@ -1,16 +1,15 @@
 import catModel from '../../model/cat'
 import { areaList } from '@vant/area-data'
-
-const app = getApp()
+import apolloBehavior from '../../behaviors/apollo'
 
 Page({
+  behaviors: [apolloBehavior],
+
   data: {
     areaList,
     showAreaList: false,
     queryCityCode: [],
     areaText: '选择城市',
-    // indexSwiperList: [],
-    indexSwiperList: app.homeSwiperList || [],
     cats: [],
     pageNum: 1,
     pageSize: 5,
@@ -42,7 +41,6 @@ Page({
   },
 
   onClickConfirm(data) {
-    console.log(data)
     const { detail } = data
     const { values } = detail
     const codes = values.map(e => e.code)
@@ -102,10 +100,6 @@ Page({
       const result = this.createTags(list)
       const cats = pageNum === 1 ? result : this.data.cats.concat(result)
   
-      this.setData({
-        indexSwiperList: app.apolloData.homeSwiperList
-      })
-
       this.setData({
         cats: cats,
         noMoreData: result.length < this.data.pageSize,

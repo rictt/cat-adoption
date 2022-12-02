@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
 
-  <c-swiper indicator-dots="{{ true }}" autoplay height="400" bind:click="onClickSwiperItem" list="{{ indexSwiperList }}"></c-swiper>
+  <c-swiper indicator-dots="{{ true }}" autoplay height="400" bind:click="onClickSwiperItem" list="{{ apolloData.homeSwiperList }}"></c-swiper>
 
   <view class="index-cols">
     <view class="cols-item" bindtap="goToNoticePage">

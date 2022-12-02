@@ -1,11 +1,7 @@
 
 import { User } from '/types/model'
-import apolloModel from './model/apollo'
 
 App({
-  apolloData: {
-    homeSwiperList: []
-  },
   globalData: {
     safeAreaHeight: 0,
     statusBarHeight: 0,
@@ -31,14 +27,8 @@ App({
     this.getPageInfo()
 
     this.getUser()
-    this.getApolloData()
   },
   
-  async getApolloData() {
-    const result = await apolloModel.get()
-    this.apolloData = result
-  },
-
   getOpenId() {
     const openId = wx.getStorageSync('openId');
     if (openId) {
