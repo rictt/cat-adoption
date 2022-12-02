@@ -16,7 +16,7 @@
       <image class="cols-item-image" src="/images/breed-bag.png" />
       <text class="cols-item-text">常见问题</text>
     </view>
-    <view class="cols-item">
+    <view class="cols-item" bindtap="goCloudCat">
       <image class="cols-item-image" src="/images/index-col-3.png" />
       <text class="cols-item-text">吸猫专栏</text>
     </view>

@@ -1,18 +1,25 @@
 import catModel from '../../model/cat'
 import { areaList } from '@vant/area-data'
 
+const app = getApp()
+
 Page({
   data: {
     areaList,
     showAreaList: false,
     queryCityCode: [],
     areaText: '选择城市',
-    indexSwiperList: [],
+    // indexSwiperList: [],
+    indexSwiperList: app.homeSwiperList || [],
     cats: [],
     pageNum: 1,
     pageSize: 5,
     noMoreData: false,
     loading: false
+  },
+
+  goCloudCat() {
+    wx.showToast({ icon: 'none', title: '开发中，敬请期待', duration: 1500, })
   },
 
   goToNoticePage() {
@@ -94,18 +101,11 @@ Page({
       }
       const result = this.createTags(list)
       const cats = pageNum === 1 ? result : this.data.cats.concat(result)
-      if (!this.initSwiper) {
-        this.initSwiper = true
-        const swiperList = cats.slice(0, 3).map(e => {
-          return {
-            url: e.imgList[0].url,
-            ...e
-          }
-        })
-        this.setData({
-          indexSwiperList: swiperList
-        })
-      }
+  
+      this.setData({
+        indexSwiperList: app.apolloData.homeSwiperList
+      })
+
       this.setData({
         cats: cats,
         noMoreData: result.length < this.data.pageSize,

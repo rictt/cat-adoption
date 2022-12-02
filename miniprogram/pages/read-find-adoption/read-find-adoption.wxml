@@ -1,7 +1,7 @@
 <view class="read-wrapper">
   <view class="read-card" bindtap="gotoFormPage">
     <view class="card-title">送养须知</view>    
-    <view class="card-desc">1.请注意保护自己的个人信息，注意防骗</view>
+    <view class="card-desc">1.填写信息时请注意保护自己的个人信息</view>
     <view class="card-desc">2.猫咪照片、文字描述尽量清晰</view>
     <view class="card-desc">3.如实告知领养人猫咪的健康情况（是否体检/绝育/疫苗等）</view>
     <view class="card-desc">4.耐心、礼貌和领养人进行沟通领养事宜，判断领养人是否适合领养</view>
