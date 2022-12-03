@@ -34,10 +34,14 @@ Page({
   resetCity() {
     this.setData({ 
       pageNum: 1,
+      pageSize: 5,
       areaText: "选择城市",
-      queryCityCode: []
+      queryCityCode: [],
+      noMoreData: false,
     })
-    this.getList()
+    setTimeout(() => {
+      this.getList({ pageNum: 1, pageSize: 5 })
+    }, 200)
   },
 
   onClickConfirm(data) {
@@ -47,6 +51,7 @@ Page({
     const cityTexts = values.map(e => e.name) 
     this.setData({
       pageNum: 1,
+      cats: [],
       noMoreData: false,
       showAreaList: false,
       queryCityCode: codes,
@@ -54,7 +59,7 @@ Page({
     })
     setTimeout(() => {
       this.getList({ pageSize: 5, pageNum: 1 })
-    }, 100)
+    }, 200)
   },
 
   onTapQueryCity() {

@@ -48,7 +48,10 @@
       </cat-info>
     </view>
     <view wx:if="{{ loading }}" class="no-more-data">加载中...</view>
-    <view wx:if="{{ noMoreData }}" class="no-more-data">没有更多数据了～</view>
+    <view wx:if="{{ noMoreData }}" class="no-more-data {{ (!cats || !cats.length) ? 'empty' : '' }}">
+      <image wx:if="{{ !cats || !cats.length }}" class="" src="/images/gender-icon.png" />
+      <text>没有更多数据了～</text>
+    </view>
   </view>
 
 </view>
