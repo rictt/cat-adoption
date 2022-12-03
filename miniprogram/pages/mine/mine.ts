@@ -4,6 +4,7 @@ const app = getApp();
   
 Page({
   data: {
+    isAuth: app.globalData.isAuth,
     backgroundColor: '#ffa766',
     nickName: '点击登录',
     createTime: '请先登录',
@@ -14,61 +15,27 @@ Page({
     this.getTabBar && this.getTabBar().setData({ active: 2 })
   },
 
-  async onLoad() {
-    let userInfo = wx.getStorageSync('userInfo')
-    if (userInfo) {
-      userInfo = JSON.parse(userInfo)
-    } else {
-      userInfo = app.globalData.userInfo
-    }
-    if (userInfo) {
-      this.setData({
-        nickName: userInfo.nickName,
-        createTime: userInfo.createTime,
-        avatarUrl: userInfo.avatarUrl,
-      })
-    } else {
-      this.onLogin()
-    }
-  },
-  onLogin() {
-    wx.login({
-      timeout: 10000,
-      success: (result) => {
-        const code = result.code
-        wx.getUserInfo({
-          withCredentials: 'false',
-          lang: 'zh_CN',
-          desc: '用于完善用户资料',
-          timeout:10000,
-          success: async (result) => {
-            const { userInfo } = result
-            const { nickName, avatarUrl } = userInfo
-            this.setData({
-              nickName,
-              avatarUrl,
-              createTime: Date.now()
-            })
-            const flag = await userModel.insert({ ...userInfo, openId: app.globalData.openId })
-            if (flag) {
-              wx.showToast({
-                title: '登录成功',
-                icon: 'none'
-              })
-            }
-          },
-          fail: () => {},
-          complete: () => {}
-        });
-          
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
+  onLoad() {
+    this.onLogin()
   },
 
-  goToFavoritePage() {
+ 
+  onLogin() {
+    app.getUserInfo()
+      .then(res => {
+        console.log(res)
+        const { nickName, avatarUrl, createTime } = res
+        this.setData({
+          isAuth: true,
+          nickName,
+          avatarUrl,
+          createTime
+        })
+      })
+  },
+
+  async goToFavoritePage() {
+    await app.getUserInfo()
     wx.navigateTo({
       url: '/pages/favorite/favorite',
       success: (result) => {
@@ -79,7 +46,8 @@ Page({
     });
   },
 
-  goToApplyRecordPage() {
+  async goToApplyRecordPage() {
+    await app.getUserInfo()
     wx.navigateTo({
       url: '/pages/apply-list/apply-list',
       success: (result) => {
@@ -90,7 +58,8 @@ Page({
     });
   },
 
-  goToSendRecordPage() {
+  async goToSendRecordPage() {
+    await app.getUserInfo()
     wx.navigateTo({
       url: '/pages/send-list/send-list',
       success: (result) => {

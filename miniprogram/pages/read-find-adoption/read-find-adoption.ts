@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
   data: {
 
@@ -10,15 +12,20 @@ Page({
   onLoad() {
   },
 
-  gotoFormPage() {
-    wx.navigateTo({
-      url: '/pages/find-adoption/find-adoption',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
+  async gotoFormPage() {
+    try {
+      await app.getUserInfo()
+      wx.navigateTo({
+        url: '/pages/find-adoption/find-adoption',
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+    } catch (error) {
+      console.log(error)
+    }
   }
 
  

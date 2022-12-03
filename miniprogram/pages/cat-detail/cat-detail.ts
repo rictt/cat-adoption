@@ -27,8 +27,6 @@ Page({
     }
   },
 
-  goShare() {
-  },
 
   async onLoad(options) {
     if (options.id) {
@@ -46,30 +44,40 @@ Page({
     });
     const id = this.data.catId
     const data = await catModel.getCat(id)
-    console.log(data)
-    const { favoriteList } = await app.getUser()
+    let isFavorite = false
+    try {
+      const { favoriteList } = await app.getUserInfo(false)
+      isFavorite = favoriteList && favoriteList.includes && favoriteList.includes(id)
+    } catch (e) {
+      console.log(e)
+    }
+
     this.setData({
       cat: data,
-      isFavorite: favoriteList && favoriteList.includes(id)
+      isFavorite
     })
-
 
     setTimeout(() => {
       wx.hideLoading();
     }, 1000)
   },
 
-  onClickApply() {
-    if (this.data.cat.isApply) {
-      this.setData({
-        applySuccessModal: true
-      })
-    } else {
-      this.startCountDown()
-      this.setData({
-        countDown: 9,
-        applyModalVisible: true
-      })
+  async onClickApply() {
+    try {
+      await app.getUserInfo()
+      if (this.data.cat.isApply) {
+        this.setData({
+          applySuccessModal: true
+        })
+      } else {
+        this.startCountDown()
+        this.setData({
+          countDown: 9,
+          applyModalVisible: true
+        })
+      }
+    } catch (e) {
+      console.log(e)
     }
   },
 
@@ -153,23 +161,20 @@ Page({
       
   },
 
-  onReady() {
-
-  },
-
   async addFavorite() {
     if (this.data.isFavorite) return
     wx.showLoading({
       mask: true,
     });
     try {
+      await app.getUserInfo()
       await userModel.addFavorite(this.data.catId)
-    } catch (e) {
-      console.log(e)
-    } finally {
       this.setData({
         isFavorite: true
       })
+    } catch (e) {
+      console.log(e)
+    } finally {
       setTimeout(() => {
         wx.hideLoading();
       }, 500)

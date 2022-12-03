@@ -1,0 +1,23 @@
+<view class="login-wrapper">
+  <view class="logo-wrapper">
+    <image class="logo" src="/images/logo.png"></image>
+    <view class="logo-text">小狸花一家</view>
+    <view class="line"></view>
+  </view>
+
+  <view class="text-wrapper">
+    <view class="text">申请获取以下权限</view>
+    <view class="text-explain">获得您的公开信息（昵称，头像等）</view>
+    <view class="text-explain">存储您提交的表单信息等</view>
+  </view>
+
+
+  <view class="btns">
+    <button class="btn btn-login" bindtap="getUserProfile">微信用户快捷登录</button>
+    <!-- 
+      <button wx:else class="btn btn-login" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信用户快捷登录</button>
+      -->
+    <view class="btn btn-cancel">取消登录</view>
+  </view>
+    
+</view>

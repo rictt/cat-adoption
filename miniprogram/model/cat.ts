@@ -52,6 +52,7 @@ class CatModel extends Base {
       model = await model.where({ adoptionAddress: city })
     }
     const { data } = await model
+      .orderBy('createTime', 'desc')
       .skip((pageNum - 1) * pageSize)
       .limit(pageSize)
       .get()

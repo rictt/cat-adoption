@@ -1,7 +1,6 @@
 import Base from './base'
 import { User } from '/types/model'
-
-const app = getApp()
+import { getOpenId } from '../utils/user'
 
 let $collection = 'user'
 
@@ -15,7 +14,7 @@ class UserModel extends Base {
     return this.model.get()
   }
   
-  async getUserInfo(openId = app.globalData.openId): Promise<User> {
+  async getUserInfo(openId = getOpenId()): Promise<User> {
     const result = await this.model.where({ openId }).get()
     const { data } = result
     if (data && data[0]) {
@@ -49,8 +48,9 @@ class UserModel extends Base {
       favoriteList = []
     }
     favoriteList.push(catId)
+    const openId = getOpenId()
     const result = await this.model
-      .where({ openId: app.globalData.openId })
+      .where({ openId })
       .update({
         data: {
           favoriteList: favoriteList

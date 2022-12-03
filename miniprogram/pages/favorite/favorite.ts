@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    cats: []
+    cats: [],
+    loaded: false
   },
 
   onLoad() {
@@ -23,11 +24,17 @@ Page({
       mask: true,
     });
       
-    const userInfo = await app.getUser()
+    const userInfo = await app.getUserInfo()
     const { favoriteList } = userInfo
     
     const tasks = []
-
+    if (!favoriteList) {
+      wx.hideLoading()
+      this.setData({
+        loaded: true
+      })
+      return
+    }
     favoriteList.forEach(item => {
       tasks.push(catModel.getCat(item))
     })

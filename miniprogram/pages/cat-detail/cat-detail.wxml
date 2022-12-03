@@ -69,7 +69,7 @@
 </view>
 
 <view class="bottom-btns" style="padding-bottom: {{ bottom }}rpx">
-  <view class="btns-left" bindtap="goShare">
+  <view class="btns-left">
     <button class="btns-open-button" open-type="share">
       <view class="btns-left-item">
           <image class="btn-icon" src="/images/share.png"></image>

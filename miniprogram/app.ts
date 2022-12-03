@@ -1,8 +1,10 @@
 
+import user from './model/user';
 import { User } from '/types/model'
 
 App({
   globalData: {
+    isAuth: false,
     safeAreaHeight: 0,
     statusBarHeight: 0,
     capsuleHeight: 0,
@@ -10,6 +12,25 @@ App({
     appId: undefined,
     openId: undefined,
     userInfo: null
+  },
+
+  getUserInfo(goLogin = true): Promise<Object> {
+    return new Promise(async (resolve, rejct) => {
+      const { isAuth, userInfo } = this.globalData
+      if (!isAuth && !userInfo) {
+        const userModel = require('./model/user').default
+        const result = await userModel.getUserInfo(this.globalData.openId)
+        if (!result) {
+          if (goLogin) {
+            wx.navigateTo({ url: "/pages/login/login" })
+          }
+          return rejct()
+        }
+        this.setUserInfo(result)
+      } else {
+        resolve(userInfo)
+      }
+    })
   },
 
   onLaunch: async function () {
@@ -25,15 +46,14 @@ App({
     
     this.getOpenId()
     this.getPageInfo()
-
-    this.getUser()
+    this.getUserInfo(false)
   },
   
   getOpenId() {
     const openId = wx.getStorageSync('openId');
     if (openId) {
       this.globalData.openId = openId
-      this.getUser()
+      this.getUserInfo(false)
       return
     }
       
@@ -45,7 +65,7 @@ App({
         wx.setStorageSync('openId', openid);
         this.globalData.openId = openid
         this.globalData.appId = appid
-        this.getUser()
+        this.getUserInfo(false)
       },
       fail: (e) => {
         console.log('get open id fail')
@@ -54,17 +74,10 @@ App({
     })
   },
 
-  async getUser(): Promise<User> {
-    // if (this.globalData.userInfo) {
-    //   return this.globalData.userInfo
-    // }
-    const userModel = require('./model/user').default
-    const result = await userModel.getUserInfo(this.globalData.openId)
-    if (result) {
-      this.globalData.userInfo = result
-      wx.setStorageSync('userInfo', JSON.stringify(result))
-    }
-    return result || this.globalData.userInfo
+  async setUserInfo(data) {
+    this.globalData.userInfo = data
+    this.globalData.isAuth = true
+    wx.setStorageSync('userInfo', JSON.stringify(data))
   },
 
   getPageInfo() {

@@ -1,4 +1,5 @@
 {
+  "lazyCodeLoading": "requiredComponents",
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
@@ -10,7 +11,8 @@
     "pages/send-list/send-list",
     "pages/notice/notice",
     "pages/protocol/protocol",
-    "pages/question/question"
+    "pages/question/question",
+    "pages/login/login"
   ],
   "tabBar": {
     "custom": true,

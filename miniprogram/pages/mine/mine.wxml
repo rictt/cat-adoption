@@ -1,14 +1,14 @@
 <c-navigation title="我的" color="#fff" backgroundColor="{{ backgroundColor }}">
 </c-navigation>
 
-<view class="mine-top">
+<view class="mine-top" bindtap="onLogin">
   <view class="mine-avatar">
     <image wx:if="{{ !avatarUrl }}" class="avatar" src="/images/index-col-1.png" />
     <image wx:else class="avatar" mode="widthFix" src="{{ avatarUrl }}" />
   </view>
-  <view class="mine-info" bindtap="onLogin">
+  <view class="mine-info">
     <view class="info-name">{{ nickName }}</view>
-    <view class="info-createtime">注册时间：{{ filter.formatTime(createTime) }}</view>
+    <view class="info-createtime">注册时间：{{ isAuth ? filter.formatTime(createTime) : '-' }}</view>
   </view>
   <image class="mine-cat" src="/images/index-col-1.png" />
 </view>
