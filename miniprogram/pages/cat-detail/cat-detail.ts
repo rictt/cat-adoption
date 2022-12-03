@@ -63,6 +63,13 @@ Page({
   },
 
   async onClickApply() {
+    if (this.timer) {
+      this.timer = null
+      clearTimeout(this.timer)
+      this.setData({
+        countDown: 9
+      })
+    }
     try {
       await app.getUserInfo()
       if (this.data.cat.isApply) {
@@ -83,9 +90,9 @@ Page({
 
   startCountDown() {
     let val = this.data.countDown--
+    clearTimeout(this.timer)
+    this.timer = null
     if (val <= 0) {
-      clearTimeout(this.timer)
-      this.timer = null
       this.setData({
         countDownText: '',
         countDown: -1,
