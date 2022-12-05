@@ -19,9 +19,18 @@ Page({
 
   onShareAppMessage() {
     const { cat } = this.data
-    const { _id, breed, adoptionAddress, age, name } = cat
+    const { _id, breed, adoptionAddressText, adoptionAddress, age, name } = cat
+    let locationText = undefined
+    if (adoptionAddressText && adoptionAddressText[1]) {
+      locationText = adoptionAddressText[1]
+    } else if (adoptionAddress && adoptionAddress[1]) {
+      locationText = adoptionAddress[1]
+    } else {
+      locationText = '有个可爱'
+    }
     return {
-      title: `【${adoptionAddress[1]}】的${age}${breed}毛孩子${name}正在等待领养`,
+      // title: `【${adoptionAddressText[1]}】的${age}${breed}毛孩子${name}正在等待领养`,
+      title: `【${locationText}】的${age}${breed}毛孩子${name}正在等待领养`,
       path: '/pages/cat-detail/cat-detail?id=' + _id,
       imageUrl: ''
     }
