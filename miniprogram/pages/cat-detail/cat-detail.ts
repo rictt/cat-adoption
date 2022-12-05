@@ -52,6 +52,7 @@ Page({
       console.log(e)
     }
 
+    console.log('cat is ', data)
     this.setData({
       cat: data,
       isFavorite

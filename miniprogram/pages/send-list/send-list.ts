@@ -22,7 +22,7 @@ Page({
   async getList() {
     wx.showLoading({ title: '加载中' })
       
-    const params = { pageNum: this.data.pageNum, pageSize: this.data.pageSize }
+    const params = { pageNum: this.data.pageNum++, pageSize: this.data.pageSize }
     const data = await catModel.getSendList(params)
     data.forEach(item => {
       if (item.imgList &&item.imgList.length) {
@@ -31,7 +31,7 @@ Page({
       item.status = item.status || 10
     })
     this.setData({
-      cats: data
+      cats: this.data.cats.concat(data)
     })
 
     console.log('cats data')
@@ -40,5 +40,9 @@ Page({
     setTimeout(() => {
       wx.hideLoading();
     }, 500)
+  },
+
+  onReachBottom() {
+    this.getList()
   }
 })

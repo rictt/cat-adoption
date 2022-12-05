@@ -83,8 +83,9 @@
       <view class="btn-text" wx:else>已收藏</view>
     </view>
   </view>
-  <view wx:if="{{ !cat.isApply }}" class="btns-right" bindtap="onClickApply">我要申请</view>
-  <view wx:if="{{ cat.isApply }}" class="btns-right" bindtap="onClickApply">查看联系</view>
+  <view wx:if="{{ cat.status === 11 }}" class="btns-right hide">已下架</view>
+  <view wx:elif="{{ (cat.status === 10 || !cat.status) && !cat.isApply }}" class="btns-right" bindtap="onClickApply">我要申请</view>
+  <view wx:elif="{{ cat.isApply }}" class="btns-right" bindtap="onClickApply">查看联系</view>
 </view>
 
 <c-popup visible="{{ applyModalVisible }}" title="领养须知" disabled="{{ !canNextConfirm }}" okText="现在申请{{ countDownText }}" bindonConfirm="onConfirm">

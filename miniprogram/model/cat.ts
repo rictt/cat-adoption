@@ -34,6 +34,7 @@ class CatModel extends Base {
       const { pageNum, pageSize } = params
       const { data } = await this.model
         .where({ _openid: app.globalData.openId })
+        .orderBy('createTime', 'desc')
         .skip((pageNum - 1) * pageSize)
         .limit(pageSize)
         .get()
