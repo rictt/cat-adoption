@@ -20,6 +20,8 @@ Page({
   },
 
   async getList() {
+    if (this.data.loaded) return
+
     wx.showLoading({ title: '加载中' })
       
     const params = { pageNum: this.data.pageNum++, pageSize: this.data.pageSize }
@@ -31,7 +33,8 @@ Page({
       item.status = item.status || 10
     })
     this.setData({
-      cats: this.data.cats.concat(data)
+      cats: this.data.cats.concat(data),
+      loaded: (!data || !data.length)
     })
 
     console.log('cats data')

@@ -1,6 +1,15 @@
 import catModel from '../../model/cat'
 import { areaList } from '@vant/area-data'
 
+
+const formKeys = [
+  'name', 'gender', 'age', 'imgList', 'isVaccinated',
+  'isSterilization', 'desc', 'adoptionAddress', 'adoptionAddressText',
+  'needReturnVisit', 'needContract', 'adoptionDesc',
+  'username', 'contact', 'breed'
+]
+const draftsKey = 'form-drafts'
+
 Page({
   data: {
     showAreaList: false,
@@ -34,6 +43,49 @@ Page({
     },
     formErrorMessage: {
       name: ''
+    }
+  },
+
+  onLoad() {
+    const saveForm = wx.getStorageSync(draftsKey);
+    console.log("saveForm")
+    console.log(saveForm)
+    if (saveForm) {
+      const obj = JSON.parse(saveForm)
+      wx.showModal({
+        title: '是否继续上次编辑',
+        content: '检测到有未完成的编辑内容',
+        showCancel: true,
+        cancelText: '取消',
+        cancelColor: '#000000',
+        confirmText: '确定',
+        confirmColor: '#ffa766',
+        success: (result) => {
+          if (result.confirm) {
+            this.setData(obj)
+          } else {
+            wx.removeStorageSync(draftsKey);
+          }
+        },
+        fail: () => {
+          wx.removeStorageSync(draftsKey);
+        }
+      });
+        
+    }
+  },
+
+  onUnload() {
+    const obj = {}
+    const keys = [...formKeys]
+    for (const key of keys) {
+      const val = this.data[key]
+      if (val)
+      obj[key] = val
+    }
+    if (obj.name && obj.gender) {
+      // 这里开始才视为有草稿内容保存
+      wx.setStorageSync(draftsKey, JSON.stringify(obj))
     }
   },
 
@@ -96,6 +148,7 @@ Page({
     });
   },
 
+
   addressChange(e) {
     console.log(e)
     const value = e.detail.value
@@ -115,12 +168,7 @@ Page({
 
   async onClickSubmit() {
     // setTimeout(())
-    const keys = [
-      'name', 'gender', 'age', 'imgList', 'isVaccinated',
-      'isSterilization', 'desc', 'adoptionAddress', 'adoptionAddressText',
-      'needReturnVisit', 'needContract', 'adoptionDesc',
-      'username', 'contact', 'breed'
-    ]
+    const keys = [...formKeys]
     const form = {}
     for (const key of keys) {
       const value = this.data[key]
@@ -143,27 +191,36 @@ Page({
 
     wx.showLoading({
       title: '正在提交',
+      mask: true
     })
     try {
       await catModel.insert(form)
     } catch (e) {
       console.log(e)
     }
-    wx.hideLoading()
-    wx.showToast({
-      title: '提交成功',
-      icon: 'none',
-      image: '',
-      duration: 1500,
-      mask: false,
-      success: (result) => {
-        setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/index/index',
-          });
-        }, 1000)
-      },
-    });
+    setTimeout(() => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '提交成功',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result) => {
+          setTimeout(() => {
+            wx.setStorageSync('refreshIndex', true);
+            wx.switchTab({
+              url: '/pages/index/index',
+              success: () => {
+                setTimeout(() => {
+                  wx.removeStorageSync(draftsKey);
+                }, 1000)
+              }
+            });
+          }, 1000)
+        },
+      });
+    }, 1000)
   },
 
   validate() {

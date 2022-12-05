@@ -71,6 +71,11 @@ Page({
   },
 
   onShow() {
+    const refreshIndex = wx.getStorageSync('refreshIndex')
+    if (refreshIndex) {
+      wx.removeStorageSync('refreshIndex');
+      this.resetCity()
+    }
     this.getTabBar && this.getTabBar().setData({ active: 0 })
   },
 
