@@ -24,7 +24,7 @@ Page({
       mask: true,
     });
       
-    const userInfo = await app.getUserInfo()
+    const userInfo = await app.getUserInfo(true, true)
     const { favoriteList } = userInfo
     
     const tasks = []

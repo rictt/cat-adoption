@@ -14,10 +14,10 @@ App({
     userInfo: null
   },
 
-  getUserInfo(goLogin = true): Promise<Object> {
+  getUserInfo(goLogin = true, force = false): Promise<Object> {
     return new Promise(async (resolve, rejct) => {
       const { isAuth, userInfo } = this.globalData
-      if (!isAuth && !userInfo) {
+      const getFromRemove = async () => {
         const userModel = require('./model/user').default
         const result = await userModel.getUserInfo(this.globalData.openId)
         if (!result) {
@@ -26,7 +26,14 @@ App({
           }
           return rejct()
         }
+        resolve(userInfo)
         this.setUserInfo(result)
+      }
+      if (force) {
+        return await getFromRemove()
+      }
+      if (!isAuth && !userInfo) {
+        await getFromRemove()
       } else {
         resolve(userInfo)
       }
