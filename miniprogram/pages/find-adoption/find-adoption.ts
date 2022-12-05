@@ -1,5 +1,6 @@
 import catModel from '../../model/cat'
 import { areaList } from '@vant/area-data'
+import apolloBehavior from '../../behaviors/apollo'
 
 
 const formKeys = [
@@ -11,6 +12,8 @@ const formKeys = [
 const draftsKey = 'form-drafts'
 
 Page({
+  behaviors: [apolloBehavior],
+  
   data: {
     showAreaList: false,
     areaList,
@@ -170,9 +173,14 @@ Page({
     // setTimeout(())
     const keys = [...formKeys]
     const form = {}
+    const { isAudit } = this.data.apolloData
     for (const key of keys) {
       const value = this.data[key]
       if (typeof value === 'boolean' || (typeof value === 'number' && value === 0)) {
+        form[key] = value
+        continue
+      }
+      if (isAudit && (key === 'username' || key === 'contact')) {
         form[key] = value
         continue
       }

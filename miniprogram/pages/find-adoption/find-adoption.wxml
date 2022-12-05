@@ -69,7 +69,7 @@
   </view>
 </view>
 
-<view class="form-card radius" style="padding-bottom: 110rpx">
+<view wx:if="{{ !apolloData || !apolloData.isAudit }}" class="form-card radius" style="padding-bottom: 110rpx">
   <view class="card-title">联系方式</view>  
   <view class="card-content">
     <c-form-item label="送养人" model:value="{{ username }}" required type="input" placeholder="请输入昵称" />

@@ -6,7 +6,8 @@ let _apolloData = null
 export default Behavior({
   data: {
     apolloData: {
-      indexSwiperList: []
+      indexSwiperList: [],
+      isAudit: false,
     }
   },
 
