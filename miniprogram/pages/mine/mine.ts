@@ -13,6 +13,16 @@ Page({
   
   onShow() {
     this.getTabBar && this.getTabBar().setData({ active: 2 })
+    app.getUserInfo(false)
+      .then(res => {
+        const { nickName, avatarUrl, createTime } = res
+        this.setData({
+          isAuth: true,
+          nickName,
+          avatarUrl,
+          createTime
+        })
+      })
   },
 
   onLoad() {

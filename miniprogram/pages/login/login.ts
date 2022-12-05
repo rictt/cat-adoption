@@ -14,11 +14,14 @@ Page({
     })
   },
 
+  generateNickName() {
+    return '小狸花' + Date.now().toString().substr(10) + Date.now().toString().substr(8, 3)
+  },
+
   async setUserInfoToCloud(userInfo) {
     await userModel.insert({ 
-      ...userInfo, 
-      openId: app.globalData.openId,
-      createTime: Date.now()
+      ...userInfo,
+      openId: app.globalData.openId
     })
   },
 
@@ -33,6 +36,8 @@ Page({
           duration: 1500,
         })
         const userInfo = res.userInfo
+        userInfo.nickName = this.generateNickName()
+        userInfo.createTime = Date.now()
         this.setData({
           isAuth: true,
           userInfo: userInfo

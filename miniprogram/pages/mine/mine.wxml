@@ -3,8 +3,7 @@
 
 <view class="mine-top" bindtap="onLogin">
   <view class="mine-avatar">
-    <image wx:if="{{ !avatarUrl }}" class="avatar" src="/images/index-col-1.png" />
-    <image wx:else class="avatar" mode="widthFix" src="{{ avatarUrl }}" />
+    <image class="avatar" src="/images/index-col-1.png" />
   </view>
   <view class="mine-info">
     <view class="info-name">{{ nickName }}</view>

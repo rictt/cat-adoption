@@ -27,11 +27,11 @@ class UserModel extends Base {
     const { openId } = userInfo
     const result = await this.getUserInfo(openId)
     if (!result) {
+      const insertInfo = {
+        ...userInfo
+      }
       const flag = await this.model.add({
-        data: {
-          ...userInfo,
-          createTime: Date.now()
-        }
+        data: insertInfo
       })
       console.log('add flag: ', flag)
     } else {
